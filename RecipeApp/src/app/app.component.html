@@ -319,10 +319,11 @@
 </main>
 
 <p>{{ loggedIn$ | async }}</p>
+<!-- True or False. Logged in or Not -->
 
 <button (click)="login()">Login</button>
 <button (click)="logout()">Logout</button>
-
+<button (click)="getUser()">Get User</button>
 <nav>
   <ul>
     <li>
@@ -351,6 +352,7 @@
     </li>
   </ul>
 </nav>
+<p>{{ user.name }}</p>
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->

@@ -18,6 +18,7 @@ export class RecipeService {
   };
   constructor(private http: HttpClient) {}
 
+  // Plocka isär en sträng för att skapa en sökterm
   getRecipes(searchterm: string): Observable<any> {
     let quisineType = ''; // Get "Quisine" type
     let mealType = ''; // Get "Meal" type

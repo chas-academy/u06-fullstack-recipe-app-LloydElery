@@ -18,17 +18,21 @@ interface RegisterDetails {}
 })
 export class AuthService {
   private loggedIn = new BehaviorSubject<boolean>(false);
+
   loggedIn$ = this.loggedIn.asObservable();
 
   private baseUrl = 'http://127.0.0.1:8000/api/';
 
+  /**
+   * Handle information
+   */
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
     }),
   };
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {} // Injected http client
 
   getLoginStatus() {
     return this.loggedIn.value;
@@ -38,6 +42,13 @@ export class AuthService {
     this.loggedIn.next(loginState);
   }
 
+  /**
+   * User Login | interface/login-details.ts
+   * @param loginDetails
+   * post-request <token> + url + loginDetails = body
+   * .pipe for error handeling
+   * .subscribe to get the request result
+   */
   loginUser(loginDetails: LoginDetails) {
     this.http
       .post<ResultData>(this.baseUrl + 'login', loginDetails, this.httpOptions)
@@ -45,6 +56,7 @@ export class AuthService {
       .subscribe((result) => {
         console.log(result);
         this.updateLoginState(true);
+        // localStorage.setItem("token", result.token); // saves the token in the local storage
         this.httpOptions.headers = this.httpOptions.headers.set(
           'Authorization',
           'Bearer ' + result.token
@@ -66,17 +78,15 @@ export class AuthService {
       });
   }
 
+  // Only gets user2
   getUser2(): Observable<User[]> {
-    return this.http.get<User[]>(this.baseUrl + 'getuser/2', this.httpOptions);
+    return this.http.get<User[]>(this.baseUrl + 'getuser/11', this.httpOptions);
   }
 
   private handleError(error: HttpErrorResponse) {
     if (error.status === 404) {
-      // A client-side or network error occurred. Handle it accordingly.
       console.error('An error occurred:', error.error);
     } else {
-      // The backend returned an unsuccessful response code.
-      // The response body may contain clues as to what went wrong.
       console.error(
         `Backend returned code ${error.status}, body was: `,
         error.error

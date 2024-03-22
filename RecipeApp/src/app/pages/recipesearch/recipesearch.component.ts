@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { RecipeService } from '../../services/recipe.service';
-import { filter, map } from 'rxjs';
 
 @Component({
   selector: 'app-recipesearch',
