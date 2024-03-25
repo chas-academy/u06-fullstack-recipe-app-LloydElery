@@ -1,14 +1,14 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RecipeService {
-  private baseUrl = 'http://api.edamam.com/api/recipes/v2?type=public';
-  private app_key = '';
-  private app_id = '';
+  private baseUrl = 'https://api.edamam.com/api/recipes/v2?type=public';
+  private app_key = '74499ac92f2f41f8eb129213812c7a03';
+  private app_id = 'e2706d13';
 
   private httOptions = {
     headers: new HttpHeaders({
@@ -16,24 +16,25 @@ export class RecipeService {
       'Accept-Language': 'en',
     }),
   };
+
   constructor(private http: HttpClient) {}
 
   // Plocka isär en sträng för att skapa en sökterm
-  getRecipes(searchterm: string): Observable<any> {
-    let quisineType = ''; // Get "Quisine" type
-    let mealType = ''; // Get "Meal" type
+  getRecipes(
+    q: string,
+    cuisineType?: string,
+    mealType?: string
+  ): Observable<any> {
+    cuisineType = '';
+    mealType = '';
     let url =
       this.baseUrl +
-      '$q=' +
-      searchterm +
+      '&q=' +
+      q +
       '&app_id=' +
       this.app_id +
       '&app_key=' +
-      this.app_key +
-      '&cuisineType=' +
-      quisineType +
-      '&mealType=' +
-      mealType;
+      this.app_key;
     return this.http.get<any>(url, this.httOptions);
   }
 }

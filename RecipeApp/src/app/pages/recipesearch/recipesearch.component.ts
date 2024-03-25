@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { RecipeService } from '../../services/recipe.service';
-
 @Component({
   selector: 'app-recipesearch',
   standalone: true,
@@ -16,20 +15,21 @@ export class RecipesearchComponent {
   searchRecipe() {
     this.recipeService.getRecipes('chicken').subscribe((res) => {
       console.log(res);
+
       let recipeArray: any[];
       recipeArray = res.hits;
       console.log(recipeArray);
 
       let recipes = recipeArray.map((item) => {
         return {
-          self: item._link.self.href,
-          lable: item.recipe.lable,
+          self: item._links.self.href,
+          label: item.recipe.label,
           image: item.recipe.image,
           totalTime: item.recipe.totalTime,
           ingredientLines: item.recipe.ingredientLines,
         };
       });
-      console.log(recipes);
+      console.table(recipes);
       this.recipes = recipes;
     });
   }

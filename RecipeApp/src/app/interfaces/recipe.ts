@@ -1,1 +1,3 @@
-export interface Recipe {}
+export interface Recipe {
+  lable: string;
+}

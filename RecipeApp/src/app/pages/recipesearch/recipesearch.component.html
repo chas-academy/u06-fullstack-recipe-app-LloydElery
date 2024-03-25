@@ -2,15 +2,9 @@
 
 <button (click)="searchRecipe()">Get recipes</button>
 
-@for (recipe of recipes; track recipe) {
-<article>
-  <h3>{{ recipe.lable }}</h3>
-  <img src="{{ recipe.image }}" alt="{{ recipe.lable }}" />
-  <p>Time: {{ recipe.totalTime }}</p>
-  <ul>
-    {{
-      recipe.ingredientLines
-    }}
-  </ul>
-</article>
+@for (recipe of recipes; track recipe){
+<h2>{{ recipe.label }}</h2>
+<img src="{{ recipe.image }}" alt="{{ recipe.lable }}" />
+} @empty {
+<p>No Recipes found</p>
 }

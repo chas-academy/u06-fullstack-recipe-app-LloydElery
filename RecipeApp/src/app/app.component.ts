@@ -6,7 +6,6 @@ import { User } from './interfaces/user';
 import { Observable } from 'rxjs';
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { LoginFormComponent } from './login-form/login-form.component';
-
 @Component({
   selector: 'app-root',
   standalone: true,
