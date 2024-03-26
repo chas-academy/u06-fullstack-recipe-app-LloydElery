@@ -12,11 +12,13 @@ export class RecipeComponent implements OnInit {
   id?: string;
 
   constructor(private route: ActivatedRoute) {}
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
 
   ngOninit(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
-      this.id = String(param.get)('id'));
-    })
+      this.id = String(params.get('id'));
+    });
   }
-
 }

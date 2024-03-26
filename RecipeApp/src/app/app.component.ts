@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { AuthService } from './services/auth.service';
-import { LoginDetails } from './interfaces/login-details';
-import { User } from './interfaces/user';
 import { Observable } from 'rxjs';
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { LoggedInUser } from './interfaces/logged-in-user';
+import { LoginComponent } from './pages/login/login.component';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +15,7 @@ import { LoggedInUser } from './interfaces/logged-in-user';
     CommonModule,
     RouterLink,
     RouterLinkActive,
+    LoginComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
@@ -23,13 +23,9 @@ import { LoggedInUser } from './interfaces/logged-in-user';
 export class AppComponent {
   title = 'RecipeApp';
 
-
   loggedIn$: Observable<LoggedInUser>; // Listens to changes in auth login. Conected to the loggedIn service
 
   constructor(private auth: AuthService) {
     this.loggedIn$ = this.auth.loggedIn$;
-    };
-
-
   }
 }
