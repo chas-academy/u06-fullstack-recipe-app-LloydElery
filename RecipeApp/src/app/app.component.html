@@ -225,8 +225,8 @@
           <clipPath id="a"><path fill="#fff" d="M0 0h982v239H0z" /></clipPath>
         </defs>
       </svg>
-      <h1>Hello, {{ title }}</h1>
-      <p>Congratulations! Your app is running. 🎉</p>
+      <h1>Food Guru</h1>
+      <p>Ask The Food Guru what to cook!</p>
     </div>
     <div class="divider" role="separator" aria-label="Divider"></div>
     <div class="right-side">
@@ -321,11 +321,30 @@
 <p>{{ loggedIn$ | async }}</p>
 <!-- True or False. Logged in or Not -->
 
-<button (click)="login()">Login</button>
-<button (click)="logout()">Logout</button>
-<button (click)="getUser()">Get User</button>
 <nav>
+  <div class="profile-details">
+    @if((loggedIn$ | async)?.loginState ) {
+    <h2>{{ (loggedIn$ | async)?.user?.name }}</h2>
+    } @else {
+    <li>
+      <a
+        routerLink="/login"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        >Login or Register</a
+      >
+    </li>
+    }
+  </div>
   <ul>
+    <li>
+      <a
+        routerLink="/profile"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        >Profile</a
+      >
+    </li>
     <li>
       <a
         routerLink="/search"
@@ -342,17 +361,8 @@
         >Recipe</a
       >
     </li>
-    <li>
-      <a
-        routerLink="/profile"
-        routerLinkActive="active"
-        ariaCurrentWhenActive="page"
-        >Profile</a
-      >
-    </li>
   </ul>
 </nav>
-<p>{{ user.name }}</p>
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->

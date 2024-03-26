@@ -1,0 +1,20 @@
+<p>recipes works!</p>
+
+<input type="text" [(ngModel)]="searchterm" />
+
+<button (click)="(searchRecipe)">Search Recipe</button>
+
+@for (recipe of recipes; track recipe) {
+<article>
+  <h3>{{ recipe.label }}</h3>
+  <img src="{{ recipe.image }}" alt="{{ recipe.label }}" />
+  <p>Time to cook: {{ recipe.totalTime }}</p>
+  <p>
+    <a [routerLink]="['/recipe', recipe.self | recipeIdFormatter]"
+      >Go to recipe</a
+    >
+  </p>
+</article>
+} @empty {
+<p>There are no recipes of this kind.</p>
+}

@@ -1,3 +1,7 @@
 export interface Recipe {
-  lable: string;
+  label: string;
+  image: string;
+  ingredientLines: string;
+  totalTime: number;
+  self: string;
 }
