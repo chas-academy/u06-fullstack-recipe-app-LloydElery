@@ -37,4 +37,9 @@ export class RecipeService {
       this.app_key;
     return this.http.get<any>(url, this.httOptions);
   }
+
+  getRecipe(id: string) {
+    // returnera den sträng som skapas med sitt id
+    // Skapa en component som tar hand om en sak
+  }
 }

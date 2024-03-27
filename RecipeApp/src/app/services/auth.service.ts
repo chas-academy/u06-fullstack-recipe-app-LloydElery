@@ -4,24 +4,28 @@ import {
   HttpErrorResponse,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { LoginDetails } from '../interfaces/login-details';
 import { BehaviorSubject, Observable, catchError, throwError } from 'rxjs';
 import { User } from '../interfaces/user';
+import { LoggedInUser } from '../interfaces/logged-in-user';
+import { LoginDetails } from '../interfaces/login-details';
+import { RegisterDetails } from '../interfaces/register-details';
 
 interface ResultData {
   token: string;
+  user: User;
 }
-
-interface RegisterDetails {}
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private loggedIn = new BehaviorSubject<boolean>(false);
+  private loggedIn = new BehaviorSubject<LoggedInUser>({
+    user: undefined,
+    loginState: false,
+  });
 
-  loggedIn$ = this.loggedIn.asObservable();
+  loggedIn$ = this.loggedIn.asObservable(); // En observable som är kopplad till loggedIn subjektet (denna kommer alltid att ha det senaste värdet)
 
-  private baseUrl = 'http://127.0.0.1:8000/api/';
+  private baseUrl = 'http://127.0.0.1:8000/api/'; // Denna kommer ändras när vi deployar
 
   /**
    * Handle information
@@ -34,14 +38,26 @@ export class AuthService {
 
   constructor(private http: HttpClient) {} // Injected http client
 
+  // Hämtar boolean värdet för att guarden kräver det.
+  // Vanligtvis vill vi koppla till våra streams, dock har vi inte fått det att fungera ännu
   getLoginStatus() {
-    return this.loggedIn.value;
+    return this.loggedIn.value.loginState;
   }
 
-  private updateLoginState(loginState: boolean) {
+  // Uppdaterar boolean som för att se om användaren är inloggad eller ej.
+  private updateLoginState(loginState: LoggedInUser) {
     this.loggedIn.next(loginState);
   }
 
+  registerUser(registerDetails: RegisterDetails): Observable<ResultData> {
+    return this.http
+      .post<ResultData>(
+        this.baseUrl + 'register',
+        registerDetails,
+        this.httpOptions
+      )
+      .pipe(catchError(this.handleError));
+  }
   /**
    * User Login | interface/login-details.ts
    * @param loginDetails
@@ -50,12 +66,18 @@ export class AuthService {
    * .subscribe to get the request result
    */
   loginUser(loginDetails: LoginDetails) {
-    this.http
+    console.log('loginUser-method');
+    return this.http
       .post<ResultData>(this.baseUrl + 'login', loginDetails, this.httpOptions)
       .pipe(catchError(this.handleError))
       .subscribe((result) => {
         console.log(result);
-        this.updateLoginState(true);
+
+        this.updateLoginState({
+          user: result.user,
+          loginState: true,
+        });
+
         // localStorage.setItem("token", result.token); // saves the token in the local storage
         this.httpOptions.headers = this.httpOptions.headers.set(
           'Authorization',
@@ -64,13 +86,16 @@ export class AuthService {
       });
   }
 
-  logOut() {
+  logoutUser() {
     this.http
       .post<ResultData>(this.baseUrl + 'login', {}, this.httpOptions)
       .pipe(catchError(this.handleError))
       .subscribe((result) => {
         console.log(result);
-        this.updateLoginState(false);
+        this.updateLoginState({
+          user: undefined,
+          loginState: false,
+        });
         this.httpOptions.headers = this.httpOptions.headers.set(
           'Authorization',
           'Bearer '
@@ -78,8 +103,26 @@ export class AuthService {
       });
   }
 
-  // Only gets user2
-  getUser2(): Observable<User[]> {
+  getCurrentUser() {
+    let user: User;
+
+    user = {
+      id: 0,
+      name: '',
+      email: '',
+    };
+
+    this.http
+      .get<User[]>(
+        this.baseUrl + 'getUser/' + this.loggedIn.value.user?.id,
+        this.httpOptions
+      )
+      .subscribe((res) => (user = res[0]));
+    return user;
+  }
+
+  // Only gets user11
+  getUser11(): Observable<User[]> {
     return this.http.get<User[]>(this.baseUrl + 'getuser/11', this.httpOptions);
   }
 

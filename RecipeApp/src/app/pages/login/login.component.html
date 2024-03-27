@@ -1,0 +1,30 @@
+<p>login works!</p>
+
+<!-- <input type="text" {[]} />
+//TODO Make the input field for the login -->
+
+<form [formGroup]="loginForm" (ngSubmit)="login()">
+  <label for="email">
+    E-mail:
+    <input
+      type="text"
+      id="email"
+      formControlName="email"
+      autocomplete="email"
+    />
+  </label>
+
+  <label for="password">
+    Password:
+    <input
+      type="password"
+      autocomplete="current-password"
+      id="password"
+      formControlName="password"
+    />
+  </label>
+
+  <button type="submit">Login</button>
+</form>
+
+<h2>Profile: {{ loginForm.value.email }}</h2>

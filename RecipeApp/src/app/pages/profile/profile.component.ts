@@ -21,7 +21,7 @@ export class ProfileComponent {
   }
 
   getUser() {
-    this.auth.getUser2().subscribe((res) => {
+    this.auth.getUser11().subscribe((res) => {
       console.log(res[0]); // Tar ut det första elementet ur arrayen
       this.user = res[0];
     });
