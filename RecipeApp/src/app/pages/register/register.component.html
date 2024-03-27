@@ -1,0 +1,30 @@
+<p>register works!</p>
+
+<form [formGroup]="registerForm" (ngSubmit)="register()">
+  <label for="name">
+    Username:
+    <input type="text" id="name" formControlName="name" />
+  </label>
+  <label for="email">
+    E-mail:
+    <input type="text" id="email" formControlName="email" />
+  </label>
+
+  <label for="password">
+    Password:
+    <input type="text" id="password" formControlName="password" />
+  </label>
+
+  <label for="password_confirmation">
+    Password:
+    <input
+      type="text"
+      id="password_confirmation"
+      formControlName="password_confirmation"
+    />
+  </label>
+
+  <button type="submit" [disabled]="!registerForm.valid">Register</button>
+</form>
+
+<h2>Profile: {{ registerForm.value.name }}</h2>

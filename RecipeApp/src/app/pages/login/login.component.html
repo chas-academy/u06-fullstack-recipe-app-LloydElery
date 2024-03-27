@@ -3,18 +3,28 @@
 <!-- <input type="text" {[]} />
 //TODO Make the input field for the login -->
 
-<form [formGroup]="loginForm" (ngSubmit)="handleSubmit()">
+<form [formGroup]="loginForm" (ngSubmit)="login()">
   <label for="email">
     E-mail:
-    <input type="text" formControlName="email" />
+    <input
+      type="text"
+      id="email"
+      formControlName="email"
+      autocomplete="email"
+    />
   </label>
 
   <label for="password">
     Password:
-    <input type="text" formControlName="password" />
+    <input
+      type="password"
+      autocomplete="current-password"
+      id="password"
+      formControlName="password"
+    />
   </label>
 
-  <button type="submit" (submit)="login()">Login</button>
+  <button type="submit">Login</button>
 </form>
 
 <h2>Profile: {{ loginForm.value.email }}</h2>

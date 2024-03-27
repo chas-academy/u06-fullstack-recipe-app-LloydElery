@@ -4,10 +4,10 @@ import {
   HttpErrorResponse,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { LoginDetails } from '../interfaces/login-details';
 import { BehaviorSubject, Observable, catchError, throwError } from 'rxjs';
 import { User } from '../interfaces/user';
 import { LoggedInUser } from '../interfaces/logged-in-user';
+import { LoginDetails } from '../interfaces/login-details';
 import { RegisterDetails } from '../interfaces/register-details';
 
 interface ResultData {
@@ -66,7 +66,8 @@ export class AuthService {
    * .subscribe to get the request result
    */
   loginUser(loginDetails: LoginDetails) {
-    this.http
+    console.log('loginUser-method');
+    return this.http
       .post<ResultData>(this.baseUrl + 'login', loginDetails, this.httpOptions)
       .pipe(catchError(this.handleError))
       .subscribe((result) => {
@@ -92,7 +93,7 @@ export class AuthService {
       .subscribe((result) => {
         console.log(result);
         this.updateLoginState({
-          user: result.user,
+          user: undefined,
           loginState: false,
         });
         this.httpOptions.headers = this.httpOptions.headers.set(

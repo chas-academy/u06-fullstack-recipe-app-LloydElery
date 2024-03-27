@@ -18,25 +18,18 @@ import { RegisterDetails } from '../../interfaces/register-details';
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
-  loginDetails: LoginDetails;
-
-  constructor(private auth: AuthService) {
-    this.loginDetails = {
-      email: '',
-      password: '',
-    };
-  }
+  constructor(private auth: AuthService) {}
 
   loginForm = new FormGroup({
     email: new FormControl(''),
     password: new FormControl(''),
   });
 
-  handleSubmit() {
-    return this.loginForm.value.email;
-  }
-
   login() {
-    this.auth.loginUser(this.loginDetails);
+    console.log('login-method');
+    const loginData = this.loginForm.value;
+    console.log(loginData);
+    this.auth.loginUser(loginData as LoginDetails);
+    console.log('You are now logged in!');
   }
 }

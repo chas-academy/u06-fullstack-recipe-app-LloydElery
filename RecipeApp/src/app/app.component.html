@@ -318,25 +318,30 @@
   </div>
 </main>
 
-<p>{{ loggedIn$ | async }}</p>
-<!-- True or False. Logged in or Not -->
-
 <nav>
-  <div class="profile-details">
-    @if((loggedIn$ | async)?.loginState ) {
-    <h2>{{ (loggedIn$ | async)?.user?.name }}</h2>
-    } @else {
-    <li>
-      <a
-        routerLink="/login"
-        routerLinkActive="active"
-        ariaCurrentWhenActive="page"
-        >Login</a
-      >
-    </li>
-    }
-  </div>
   <ul>
+    <div class="profile-details">
+      @if((loggedIn$ | async)?.loginState ) {
+      <h2>{{ (loggedIn$ | async)?.user?.name }}</h2>
+      } @else {
+      <li>
+        <a
+          routerLink="/login"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+          >Login</a
+        >
+      </li>
+      <li>
+        <a
+          routerLink="/register"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+          >Register</a
+        >
+      </li>
+      }
+    </div>
     <li>
       <a
         routerLink="/profile"
