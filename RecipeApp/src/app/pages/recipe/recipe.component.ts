@@ -3,11 +3,12 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { RecipeService } from '../../services/recipe.service';
 import { RecipeIdFormatterPipe } from '../../pipes/recipe-id-formatter.pipe';
 import { Recipe } from '../../interfaces/recipe';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-recipe',
   standalone: true,
-  imports: [RecipeIdFormatterPipe],
+  imports: [RecipeIdFormatterPipe, CommonModule],
   templateUrl: './recipe.component.html',
   styleUrl: './recipe.component.css',
 })
@@ -43,6 +44,7 @@ export class RecipeComponent implements OnInit {
         self: result.recipe.self,
       };
       console.log(recipe);
+      this.recipe = recipe;
     });
   }
 }

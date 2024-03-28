@@ -29,4 +29,8 @@ export class LoginComponent {
     this.auth.loginUser(loginData as LoginDetails);
     console.log('You are now logged in!');
   }
+
+  logOut() {
+    this.auth.logoutUser;
+  }
 }
