@@ -15,7 +15,7 @@ import { RecipeIdFormatterPipe } from '../../pipes/recipe-id-formatter.pipe';
 export class RecipesComponent {
   recipes?: Recipe[];
 
-  searchterm = 'Chicken'; //TODO Save the search-input here
+  searchterm = ''; // User search-input: string
 
   cuisineType = ''; //TODO
 
@@ -39,7 +39,7 @@ export class RecipesComponent {
           _links: { self: { href: any } };
         }) => {
           return {
-            lable: item.recipe.label,
+            label: item.recipe.label,
             image: item.recipe.image,
             ingredientLines: item.recipe.ingredientLines,
             totalTime: item.recipe.totalTime,

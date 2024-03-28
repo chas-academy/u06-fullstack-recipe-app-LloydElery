@@ -38,8 +38,19 @@ export class RecipeService {
     return this.http.get<any>(url, this.httOptions);
   }
 
-  getRecipe(id: string) {
+  getRecipe(id?: string): Observable<any> {
     // returnera den sträng som skapas med sitt id
     // Skapa en component som tar hand om en sak
+    let url =
+      'https://api.edamam.com/api/recipes/v2/' +
+      id +
+      '?type=public' +
+      '&app_id=' +
+      this.app_id +
+      '&app_key=' +
+      this.app_key;
+    return this.http.get<any>(url, this.httOptions);
   }
+
+  // https://api.edamam.com/api/recipes/v2/2560dba5e97fd700f9beaa8cc23e1c51?type=public&app_id=e2706d13&app_key=74499ac92f2f41f8eb129213812c7a03
 }

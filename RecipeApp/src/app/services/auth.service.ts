@@ -67,8 +67,9 @@ export class AuthService {
    */
   loginUser(loginDetails: LoginDetails) {
     console.log('loginUser-method');
-    return this.http
-      .post<ResultData>(this.baseUrl + 'login', loginDetails, this.httpOptions)
+
+    this.http
+      .post<any>(this.baseUrl + 'login', loginDetails, this.httpOptions)
       .pipe(catchError(this.handleError))
       .subscribe((result) => {
         console.log(result);

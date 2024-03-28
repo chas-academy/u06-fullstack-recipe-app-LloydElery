@@ -322,7 +322,7 @@
   <ul>
     <div class="profile-details">
       @if((loggedIn$ | async)?.loginState ) {
-      <h2>{{ (loggedIn$ | async)?.user?.name }}</h2>
+      <h2>Welcome {{ (loggedIn$ | async)?.user?.name }}!</h2>
       } @else {
       <li>
         <a
@@ -352,10 +352,10 @@
     </li>
     <li>
       <a
-        routerLink="/search"
+        routerLink="/recipes"
         routerLinkActive="active"
         ariaCurrentWhenActive="page"
-        >Search</a
+        >Recipes</a
       >
     </li>
     <li>

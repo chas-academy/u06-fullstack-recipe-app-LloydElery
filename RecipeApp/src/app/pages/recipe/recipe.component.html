@@ -1,1 +1,15 @@
-<p>{{ id }}</p>
+<article>
+  <h2>{{ recipe?.label }}</h2>
+
+  <img src="{{ recipe?.image }}" alt="{{ recipe?.label }}" />
+
+  <strong>Ingredients:</strong>
+
+  @for (line of recipe?.ingredientLines; track line) {
+  <p>{{ line }}</p>
+  }
+  <strong>Cooking time: </strong>
+  <p>{{ recipe?.totalTime }} minutes</p>
+
+  <h4>Recipe:</h4>
+</article>

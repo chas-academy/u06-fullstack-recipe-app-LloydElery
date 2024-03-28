@@ -1,8 +1,8 @@
 <p>recipes works!</p>
 
-<input type="text" [(ngModel)]="searchterm" />
+<input type="text" id="searchterm" [(ngModel)]="searchterm" />
 
-<button (click)="(searchRecipe)">Search Recipe</button>
+<button (click)="searchRecipe()">Search Recipe</button>
 
 @for (recipe of recipes; track recipe) {
 <article>
