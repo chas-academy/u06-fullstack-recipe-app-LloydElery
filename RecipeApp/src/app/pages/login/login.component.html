@@ -3,6 +3,7 @@
 <!-- <input type="text" {[]} />
 //TODO Make the input field for the login -->
 
+@if(!(loggedIn$ | async)?.loginState ) {
 <form [formGroup]="loginForm" (ngSubmit)="login()">
   <label for="email">
     E-mail:
@@ -26,5 +27,6 @@
 
   <button type="submit">Login</button>
 </form>
-
-<h2>Profile: {{ loginForm.value.email }}</h2>
+} @else {
+<button (click)="logOut()">Logout</button>
+}

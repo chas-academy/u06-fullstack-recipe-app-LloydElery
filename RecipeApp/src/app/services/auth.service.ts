@@ -88,20 +88,14 @@ export class AuthService {
   }
 
   logoutUser() {
-    this.http
-      .post<ResultData>(this.baseUrl + 'login', {}, this.httpOptions)
-      .pipe(catchError(this.handleError))
-      .subscribe((result) => {
-        console.log(result);
-        this.updateLoginState({
-          user: undefined,
-          loginState: false,
-        });
-        this.httpOptions.headers = this.httpOptions.headers.set(
-          'Authorization',
-          'Bearer '
-        );
-      });
+    this.updateLoginState({
+      user: undefined,
+      loginState: false,
+    });
+    this.httpOptions.headers = this.httpOptions.headers.set(
+      'Authorization',
+      'Bearer '
+    );
   }
 
   getCurrentUser() {
