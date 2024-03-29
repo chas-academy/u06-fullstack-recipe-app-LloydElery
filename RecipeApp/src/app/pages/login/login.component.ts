@@ -7,15 +7,23 @@ import {
   FormsModule,
   ReactiveFormsModule,
 } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { LoggedInUser } from '../../interfaces/logged-in-user';
+import { AsyncPipe } from '@angular/common';
+
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule],
+  imports: [FormsModule, ReactiveFormsModule, AsyncPipe],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
-  constructor(private auth: AuthService) {}
+  loggedIn$: Observable<LoggedInUser>; // Listens to changes in auth login. Conected to the loggedIn service
+
+  constructor(private auth: AuthService) {
+    this.loggedIn$ = this.auth.loggedIn$;
+  }
 
   loginForm = new FormGroup({
     email: new FormControl(''),
@@ -31,6 +39,6 @@ export class LoginComponent {
   }
 
   logOut() {
-    this.auth.logoutUser;
+    this.auth.logoutUser();
   }
 }

@@ -323,6 +323,7 @@
     <div class="profile-details">
       @if((loggedIn$ | async)?.loginState ) {
       <h2>Welcome {{ (loggedIn$ | async)?.user?.name }}!</h2>
+
       } @else {
       <li>
         <a
