@@ -1,15 +1,28 @@
 <article>
   <h2>{{ recipe?.label }}</h2>
-
+  <br />
   <img src="{{ recipe?.image }}" alt="{{ recipe?.label }}" />
-
+  <br />
+  <strong>This food contains: </strong>
+  <p>{{ recipe?.cautions }}</p>
+  <br />
   <strong>Ingredients:</strong>
-
-  @for (line of recipe?.ingredientLines; track line) {
-  <p>{{ line }}</p>
-  }
+  <br />
+  <ul>
+    @for (line of recipe?.ingredientLines; track line) {
+    <li>{{ line }}</li>
+    }
+  </ul>
   <strong>Cooking time: </strong>
   <p>{{ recipe?.totalTime }} minutes</p>
+  <br />
+  <strong>Global Kitchen:</strong>
+  <p class="tags">{{ recipe?.cuisineType }}</p>
+  <br />
+  <strong>Type of meal:</strong>
+  <p class="tags">{{ recipe?.mealType }}</p>
+  <p class="tags">{{ recipe?.dishType }}</p>
 
-  <h4>Recipe:</h4>
+  <p class="tags">{{ recipe?.instructions }}</p>
+  <p class="tags">{{ recipe?.tags }}</p>
 </article>

@@ -17,5 +17,10 @@ export interface Recipe {
   self: string;
   yield?: number;
   dietLabels?: string;
-  ingredients?: string;
+  cautions?: string;
+  cuisineType: string;
+  mealType: string;
+  dishType: string;
+  instructions: string;
+  tags: string;
 }

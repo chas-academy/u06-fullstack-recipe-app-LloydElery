@@ -34,16 +34,24 @@ export class RecipeComponent implements OnInit {
 
   getSingleRecipe() {
     this.recipeService.getRecipe(this.id).subscribe((result) => {
-      console.log(result);
+      console.table(result);
 
       let recipe: Recipe = {
         label: result.recipe.label,
         image: result.recipe.image,
         ingredientLines: result.recipe.ingredientLines,
         totalTime: result.recipe.totalTime,
-        self: result.recipe.self,
+        self: result._links.self.href,
+        yield: result.recipe.yield,
+        dietLabels: result.recipe.dietLabels,
+        cautions: result.recipe.cautions,
+        cuisineType: result.recipe.cuisineType,
+        mealType: result.recipe.mealType,
+        dishType: result.recipe.dishType,
+        instructions: result.recipe.instructions,
+        tags: result.recipe.tags,
       };
-      console.log(recipe);
+      console.table(recipe);
       this.recipe = recipe;
     });
   }
