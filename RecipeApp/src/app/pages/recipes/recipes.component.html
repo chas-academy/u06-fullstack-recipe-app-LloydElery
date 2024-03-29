@@ -7,8 +7,15 @@
 @for (recipe of recipes; track recipe) {
 <article>
   <h3>{{ recipe.label }}</h3>
+
   <img src="{{ recipe.image }}" alt="{{ recipe.label }}" />
-  <p>Time to cook: {{ recipe.totalTime }}</p>
+
+  @if (recipe.totalTime != 0) {
+  <p>Time: {{ recipe.totalTime }}</p>
+  } @if (recipe.yield) {
+  <p>Portions: {{ recipe.yield }}</p>
+  }
+
   <p>
     <a [routerLink]="['/recipe', recipe.self | recipeIdFormatter]"
       >Go to recipe</a

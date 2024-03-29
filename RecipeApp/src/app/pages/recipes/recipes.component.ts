@@ -35,6 +35,7 @@ export class RecipesComponent {
             image: any;
             ingredientLines: any;
             totalTime: any;
+            yield: any;
           };
           _links: { self: { href: any } };
         }) => {
@@ -43,6 +44,7 @@ export class RecipesComponent {
             image: item.recipe.image,
             ingredientLines: item.recipe.ingredientLines,
             totalTime: item.recipe.totalTime,
+            yield: item.recipe.yield,
             self: item._links.self.href,
           };
         }
