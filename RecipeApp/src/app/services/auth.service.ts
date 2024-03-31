@@ -36,7 +36,13 @@ export class AuthService {
     }),
   };
 
-  constructor(private http: HttpClient) {} // Injected http client
+  constructor(private http: HttpClient) {
+    if (this.loggedIn$) {
+      sessionStorage.getItem('token');
+    } else {
+      console.log('You are not logged in.');
+    }
+  } // Injected http client
 
   // Hämtar boolean värdet för att guarden kräver det.
   // Vanligtvis vill vi koppla till våra streams, dock har vi inte fått det att fungera ännu
@@ -67,19 +73,19 @@ export class AuthService {
    */
   loginUser(loginDetails: LoginDetails) {
     console.log('loginUser-method');
-
     this.http
       .post<any>(this.baseUrl + 'login', loginDetails, this.httpOptions)
       .pipe(catchError(this.handleError))
       .subscribe((result) => {
         console.log(result);
 
+        sessionStorage.setItem('token', result.token); // Saves a token in the session storage to identify user
+
         this.updateLoginState({
           user: result.user,
           loginState: true,
         });
 
-        // localStorage.setItem("token", result.token); // saves the token in the local storage
         this.httpOptions.headers = this.httpOptions.headers.set(
           'Authorization',
           'Bearer ' + result.token
@@ -96,6 +102,8 @@ export class AuthService {
       'Authorization',
       'Bearer '
     );
+
+    sessionStorage.clear(); // Clears user information from the session storage
   }
 
   getCurrentUser() {

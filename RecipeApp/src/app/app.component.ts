@@ -28,4 +28,21 @@ export class AppComponent {
   constructor(private auth: AuthService) {
     this.loggedIn$ = this.auth.loggedIn$;
   }
+
+  dataSave() {
+    sessionStorage.setItem('name', 'Dennis');
+    sessionStorage.setItem('age', '34');
+  }
+
+  get() {
+    return sessionStorage.getItem('name'), sessionStorage.getItem('age');
+  }
+
+  dataRemove() {
+    sessionStorage.removeItem('name');
+  }
+
+  dataDeleteAll() {
+    sessionStorage.clear();
+  }
 }
