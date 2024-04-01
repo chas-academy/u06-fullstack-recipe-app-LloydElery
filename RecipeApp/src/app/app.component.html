@@ -319,10 +319,20 @@
 </main>
 
 <nav>
-  <ul>
+  <h2>Navbar</h2>
+  <menu>
     <div class="profile-details">
       @if((loggedIn$ | async)?.loginState ) {
       <h2>Welcome {{ (loggedIn$ | async)?.user?.name }}!</h2>
+
+      <li>
+        <a
+          routerLink="/profile"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+          >Profile</a
+        >
+      </li>
 
       } @else {
       <li>
@@ -343,32 +353,11 @@
       </li>
       }
     </div>
-    <li>
-      <a
-        routerLink="/profile"
-        routerLinkActive="active"
-        ariaCurrentWhenActive="page"
-        >Profile</a
-      >
-    </li>
-    <li>
-      <a
-        routerLink="/recipes"
-        routerLinkActive="active"
-        ariaCurrentWhenActive="page"
-        >Recipes</a
-      >
-    </li>
-    <li>
-      <a
-        routerLink="/recipe"
-        routerLinkActive="active"
-        ariaCurrentWhenActive="page"
-        >Recipe</a
-      >
-    </li>
-  </ul>
+  </menu>
 </nav>
+@if ((loggedIn$ | async)?.loginState) {
+<app-recipes></app-recipes>
+}
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->

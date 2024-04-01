@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { AuthService } from './services/auth.service';
 import { Observable } from 'rxjs';
-import { AsyncPipe, CommonModule } from '@angular/common';
+import { AsyncPipe, CommonModule, NgOptimizedImage } from '@angular/common';
 import { LoggedInUser } from './interfaces/logged-in-user';
 import { LoginComponent } from './pages/login/login.component';
+import { RecipesComponent } from './pages/recipes/recipes.component';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,8 @@ import { LoginComponent } from './pages/login/login.component';
     RouterLink,
     RouterLinkActive,
     LoginComponent,
+    NgOptimizedImage,
+    RecipesComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

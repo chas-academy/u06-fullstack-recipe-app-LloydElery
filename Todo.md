@@ -41,3 +41,6 @@
 7. Se över inloggning och auth
 8. Gör applikationen responsiv
 9. Design / UI
+
+//TODO Make registerd users go to 'profile' page on successfull register
+//TODO Make ragisterd users be signed in after register

@@ -4,11 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { Recipe } from '../../interfaces/recipe';
 import { RouterLink } from '@angular/router';
 import { RecipeIdFormatterPipe } from '../../pipes/recipe-id-formatter.pipe';
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-recipes',
   standalone: true,
-  imports: [FormsModule, RouterLink, RecipeIdFormatterPipe],
+  imports: [FormsModule, RouterLink, RecipeIdFormatterPipe, NgOptimizedImage],
   templateUrl: './recipes.component.html',
   styleUrl: './recipes.component.css',
 })
@@ -17,9 +18,9 @@ export class RecipesComponent {
 
   searchterm = ''; // User search-input: string
 
-  cuisineType = ''; //TODO
+  cuisineType = ['American', 'Asian', 'British']; //TODO
 
-  mealType = ''; //TODO
+  mealType = ['Breakfast', 'Dinner', 'Lunch', 'Snack', 'Teatime']; //TODO
 
   constructor(private recipeService: RecipeService) {}
 

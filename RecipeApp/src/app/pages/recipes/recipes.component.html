@@ -1,14 +1,25 @@
-<p>recipes works!</p>
-
+<h2>Search Recipe</h2>
 <input type="text" id="searchterm" [(ngModel)]="searchterm" />
 
 <button (click)="searchRecipe()">Search Recipe</button>
 
+<br />
+<label for="mealType">Type of meal: </label>
+<select [(ngModel)]="mealType" id="mealType">
+  <option value="mealType">--Choose a type of meal--</option>
+  <option [(ngModel)]="mealType[0]">{{ mealType[0] }}</option>
+  <option [(ngModel)]="mealType[1]">{{ mealType[1] }}</option>
+  <option [(ngModel)]="mealType[2]">{{ mealType[2] }}</option>
+  <option [(ngModel)]="mealType[3]">{{ mealType[3] }}</option>
+  <option [(ngModel)]="mealType[4]">{{ mealType[4] }}</option>
+</select>
+
 @for (recipe of recipes; track recipe) {
 <article>
   <h3>{{ recipe.label }}</h3>
-
-  <img src="{{ recipe.image }}" alt="{{ recipe.label }}" />
+  <div class="recipes-image">
+    <img ngSrc="{{ recipe.image }}" alt="{{ recipe.label }}" fill />
+  </div>
 
   @if (recipe.totalTime != 0) {
   <p>Time: {{ recipe.totalTime }}</p>
