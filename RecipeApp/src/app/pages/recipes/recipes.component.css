@@ -1,0 +1,6 @@
+.recipes-image {
+  position: relative;
+  display: flex;
+  min-width: 100%;
+  min-height: 70vw;
+}
