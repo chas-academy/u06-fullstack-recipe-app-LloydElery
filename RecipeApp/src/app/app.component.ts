@@ -30,5 +30,6 @@ export class AppComponent {
 
   constructor(private auth: AuthService) {
     this.loggedIn$ = this.auth.loggedIn$;
+    console.log(this.auth.getUserToken());
   }
 }

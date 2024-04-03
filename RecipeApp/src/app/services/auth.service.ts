@@ -15,6 +15,7 @@ interface ResultData {
   token: string;
   user: User;
 }
+
 @Injectable({
   providedIn: 'root',
 })
@@ -23,6 +24,9 @@ export class AuthService {
     user: undefined,
     loginState: false,
   });
+
+  private token: string = '';
+  username: string = '';
 
   loggedIn$ = this.loggedIn.asObservable(); // En observable som är kopplad till loggedIn subjektet (denna kommer alltid att ha det senaste värdet)
 
@@ -75,9 +79,14 @@ export class AuthService {
       .subscribe((result) => {
         console.log(result);
 
-        const setUserToken = sessionStorage.setItem('token', result.token); // saves the token in the local storage
+        let sessionToken = sessionStorage.setItem('token', result.token); // saves the token in the local storage
+        console.log(sessionToken);
 
-        console.log(setUserToken);
+        let sessionUser = sessionStorage.setItem(
+          'user',
+          JSON.stringify(result.user)
+        );
+        console.log(sessionUser);
 
         this.updateLoginState({
           user: result.user,
@@ -90,6 +99,16 @@ export class AuthService {
           'Bearer ' + result.token
         );
       });
+  }
+
+  getUserToken(): string | null {
+    console.log(this.token);
+    return this.token;
+  }
+
+  setUsername(name: string) {
+    console.log(this.username);
+    return (this.username = name);
   }
 
   logoutUser() {
