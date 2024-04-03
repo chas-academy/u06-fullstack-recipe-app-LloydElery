@@ -27,17 +27,20 @@
 - [x] Läs README.md filen
     - Följade anvisade steg i README-filen för att skapa en backend koppling
 - [x] Skapa ett Angular-projekt
-- [?] Ta bort git filen som medföljer (fick ingen)
+- [x] Ta bort git filen som medföljer (fick ingen)
 
 2. Gör en sitemap 
-- [ ] 
+- [x] 
 3. Skapa en statisk mall för samtliga sidor
-    - Header
-    - Footer
-    - Nav + Search 
-4. Skapa mockup-data för att testa funktionerna
-5. Skapa de komponenter som kommer behövas för projektet.
-6. Koppla ett REST-API
-7. Se över inloggning och auth
-8. Gör applikationen responsiv
-9. Design / UI
+    - [ ] Header
+    - [ ] Footer
+    - [ ] Nav + Search 
+4. - [x] Skapa mockup-data för att testa funktionerna
+5. - [x] Skapa de komponenter som kommer behövas för projektet.
+6. - [x] Koppla ett REST-API
+7. - [ ] Se över inloggning och auth
+8. - [ ] Gör applikationen responsiv
+9. - [ ] Design / UI
+
+//TODO Make registerd users go to 'profile' page on successfull register
+//TODO Make ragisterd users be signed in after register

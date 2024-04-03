@@ -1,14 +1,38 @@
-<p>recipes works!</p>
+<h2>Search Recipe</h2>
 
-<input type="text" id="searchterm" [(ngModel)]="searchterm" />
+<br />
+<form [formGroup]="searchForm" (ngSubmit)="(searchRecipe)">
+  <input type="text" id="searchterm" formControlName="searchterm" />
 
-<button (click)="searchRecipe()">Search Recipe</button>
+  <label for="mealType">
+    Type of meal:
+    <select formControlName="mealType">
+      <option value="mealType">--Choose a type of meal--</option>
+      @for (mealType of mealTypes; track mealType) {
+      <option [value]="mealType">{{ mealType }}</option>
+      }
+    </select>
+  </label>
+
+  <label for="cuisineType">
+    Type of meal:
+    <select formControlName="cuisineType">
+      <option value="cuisineType">--Choose a type of meal--</option>
+      @for (cuisineType of cuisineTypes; track cuisineType) {
+      <option [value]="cuisineType">{{ cuisineType }}</option>
+      }
+    </select>
+  </label>
+
+  <button (click)="searchRecipe()">Search Recipe</button>
+</form>
 
 @for (recipe of recipes; track recipe) {
 <article>
   <h3>{{ recipe.label }}</h3>
-
-  <img src="{{ recipe.image }}" alt="{{ recipe.label }}" />
+  <div class="recipes-image">
+    <img ngSrc="{{ recipe.image }}" alt="{{ recipe.label }}" fill />
+  </div>
 
   @if (recipe.totalTime != 0) {
   <p>Time: {{ recipe.totalTime }}</p>

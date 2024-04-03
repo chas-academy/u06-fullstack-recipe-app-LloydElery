@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -18,23 +19,27 @@ export class RecipeService {
   };
 
   constructor(private http: HttpClient) {}
-
+  // conosle dfatd från form and typing
   // Plocka isär en sträng för att skapa en sökterm
+
   getRecipes(
-    q: string,
-    cuisineType?: string,
-    mealType?: string
+    searchterm = '',
+    cuisineType = '',
+    mealType = ''
   ): Observable<any> {
-    cuisineType = '';
-    mealType = '';
     let url =
       this.baseUrl +
       '&q=' +
-      q +
+      searchterm +
       '&app_id=' +
       this.app_id +
       '&app_key=' +
-      this.app_key;
+      this.app_key +
+      '&cuisineType=' +
+      cuisineType +
+      '&mealType=' +
+      mealType;
+    console.log(url);
     return this.http.get<any>(url, this.httOptions);
   }
 

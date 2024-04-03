@@ -10,6 +10,7 @@ import {
 import { Observable } from 'rxjs';
 import { LoggedInUser } from '../../interfaces/logged-in-user';
 import { AsyncPipe } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,7 @@ import { AsyncPipe } from '@angular/common';
 export class LoginComponent {
   loggedIn$: Observable<LoggedInUser>; // Listens to changes in auth login. Conected to the loggedIn service
 
-  constructor(private auth: AuthService) {
+  constructor(private auth: AuthService, private router: Router) {
     this.loggedIn$ = this.auth.loggedIn$;
   }
 
@@ -37,6 +38,12 @@ export class LoginComponent {
     this.auth.loginUser(loginData as LoginDetails);
     console.log('You are now logged in!');
   }
+
+  /*   reRoute(route: string) {
+    if (this.loggedIn$) {
+      this.router.navigate([route]);
+    }
+  } */
 
   logOut() {
     this.auth.logoutUser();

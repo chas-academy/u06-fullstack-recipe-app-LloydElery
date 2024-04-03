@@ -26,6 +26,9 @@ export class RegisterComponent {
     password_confirmation: new FormControl('', Validators.required),
   });
 
+  password = this.registerForm.value.password;
+  password_confirmation = this.registerForm.value.password_confirmation;
+
   register() {
     console.log('register-method');
     const registerData = this.registerForm.value;

@@ -18,9 +18,9 @@ export interface Recipe {
   yield?: number;
   dietLabels?: string;
   cautions?: string;
-  cuisineType: string;
-  mealType: string;
-  dishType: string;
-  instructions: string;
-  tags: string;
+  cuisineType?: string;
+  mealType?: string;
+  dishType?: string;
+  instructions?: string;
+  tags?: string;
 }
