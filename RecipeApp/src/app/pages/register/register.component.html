@@ -23,8 +23,11 @@
       formControlName="password_confirmation"
     />
   </label>
-
+  @if (this.password === this.password_confirmation) {
   <button type="submit" [disabled]="!registerForm.valid">Register</button>
+  } @else {
+  <p>Passwords does not match</p>
+  }
 </form>
 
 <h2>Profile: {{ registerForm.value.name }}</h2>
