@@ -15,11 +15,21 @@
   </label>
 
   <label for="cuisineType">
-    Type of meal:
+    Food's from around the world:
     <select formControlName="cuisineType">
-      <option value="cuisineType">--Choose a type of meal--</option>
+      <option value="cuisineType">--Choose a part of the world--</option>
       @for (cuisineType of cuisineTypes; track cuisineType) {
       <option [value]="cuisineType">{{ cuisineType }}</option>
+      }
+    </select>
+  </label>
+
+  <label for="dishType">
+    Type of dish:
+    <select formControlName="dishType">
+      <option value="dishType"></option>
+      @for (dishType of dishTypes; track dishType) {
+      <option [value]="dishType">{{ dishType }}</option>
       }
     </select>
   </label>

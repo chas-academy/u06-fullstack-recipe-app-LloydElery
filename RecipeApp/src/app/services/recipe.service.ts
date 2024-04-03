@@ -25,21 +25,30 @@ export class RecipeService {
   getRecipes(
     searchterm = '',
     cuisineType = '',
-    mealType = ''
+    mealType = '',
+    dishType = ''
   ): Observable<any> {
-    let url =
-      this.baseUrl +
-      '&q=' +
-      searchterm +
-      '&app_id=' +
-      this.app_id +
-      '&app_key=' +
-      this.app_key;
+    let url = this.baseUrl;
+    if (searchterm) {
+      url +=
+        '&q=' +
+        searchterm +
+        '&app_id=' +
+        this.app_id +
+        '&app_key=' +
+        this.app_key;
+    } else {
+      url += '&app_id=' + this.app_id + '&app_key=' + this.app_key;
+    }
+
     if (cuisineType) {
-      url += '&cuisineType' + cuisineType;
+      url += '&cuisineType=' + cuisineType;
     }
     if (mealType) {
-      url += '&mealType' + mealType;
+      url += '&mealType=' + mealType;
+    }
+    if (dishType) {
+      url += '&dishType=' + dishType;
     }
     console.log(url);
 

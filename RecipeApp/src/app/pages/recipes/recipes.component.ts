@@ -32,28 +32,38 @@ export class RecipesComponent {
     'Asian',
     'British',
     'Caribbean',
-    'Central Europe',
     'Chinese',
-    'Eastern Europe',
     'French',
     'Indian',
     'Italian',
     'Japanese',
     'Kosher',
     'Mediterranean',
-    'Middle Eastern',
     'Nordic',
-    'South American',
-    'South East Asian',
   ];
   mealTypes = ['Breakfast', 'Dinner', 'Lunch', 'Snack', 'Teatime'];
 
+  dishTypes = [
+    'Bread',
+    'Cereals',
+    'Desserts',
+    'Drinks',
+    'Panncake',
+    'Preps',
+    'Preserve',
+    'Salad',
+    'Sandwiches',
+    'Soup',
+    'Starter',
+    'Sweets',
+  ];
   constructor(private recipeService: RecipeService) {}
 
   searchForm = new FormGroup({
     searchterm: new FormControl(''),
     mealType: new FormControl(''),
     cuisineType: new FormControl(''),
+    dishType: new FormControl(''),
   });
 
   searchData: any;
@@ -63,10 +73,11 @@ export class RecipesComponent {
     let searchterm = this.searchData.searchterm;
     let cuisineType = this.searchData.cuisineType;
     let mealType = this.searchData.mealType;
+    let dishType = this.searchData.dishType;
 
     console.log(this.searchData);
     this.recipeService
-      .getRecipes(searchterm, cuisineType, mealType)
+      .getRecipes(searchterm, cuisineType, mealType, dishType)
       .subscribe((result) => {
         console.table(result);
 
@@ -89,7 +100,7 @@ export class RecipesComponent {
               ingredientLines: item.recipe.ingredientLines,
               totalTime: item.recipe.totalTime,
               yield: item.recipe.yield,
-              melType: item.recipe.mealType,
+              mealType: item.recipe.mealType,
               self: item._links.self.href,
             };
           }
