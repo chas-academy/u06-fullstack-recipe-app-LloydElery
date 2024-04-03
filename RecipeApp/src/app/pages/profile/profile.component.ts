@@ -20,11 +20,4 @@ export class ProfileComponent {
       email: '',
     };
   }
-
-  getUser() {
-    this.auth.getUser11().subscribe((res) => {
-      console.log(res[0]); // Tar ut det första elementet ur arrayen
-      this.user = res[0];
-    });
-  }
 }

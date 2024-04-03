@@ -9,6 +9,7 @@ import { User } from '../interfaces/user';
 import { LoggedInUser } from '../interfaces/logged-in-user';
 import { LoginDetails } from '../interfaces/login-details';
 import { RegisterDetails } from '../interfaces/register-details';
+import { Route, Router } from '@angular/router';
 
 interface ResultData {
   token: string;
@@ -36,7 +37,7 @@ export class AuthService {
     }),
   };
 
-  constructor(private http: HttpClient) {} // Injected http client
+  constructor(private http: HttpClient, private router: Router) {} // Injected http client
 
   // Hämtar boolean värdet för att guarden kräver det.
   // Vanligtvis vill vi koppla till våra streams, dock har vi inte fått det att fungera ännu
@@ -74,12 +75,16 @@ export class AuthService {
       .subscribe((result) => {
         console.log(result);
 
+        const setUserToken = sessionStorage.setItem('token', result.token); // saves the token in the local storage
+
+        console.log(setUserToken);
+
         this.updateLoginState({
           user: result.user,
           loginState: true,
         });
 
-        // localStorage.setItem("token", result.token); // saves the token in the local storage
+        console.log();
         this.httpOptions.headers = this.httpOptions.headers.set(
           'Authorization',
           'Bearer ' + result.token
@@ -96,6 +101,7 @@ export class AuthService {
       'Authorization',
       'Bearer '
     );
+    sessionStorage.clear();
   }
 
   getCurrentUser() {
@@ -114,11 +120,6 @@ export class AuthService {
       )
       .subscribe((res) => (user = res[0]));
     return user;
-  }
-
-  // Only gets user11
-  getUser11(): Observable<User[]> {
-    return this.http.get<User[]>(this.baseUrl + 'getuser/11', this.httpOptions);
   }
 
   private handleError(error: HttpErrorResponse) {
