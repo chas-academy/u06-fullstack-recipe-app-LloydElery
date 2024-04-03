@@ -30,6 +30,14 @@ export class AppComponent {
 
   constructor(private auth: AuthService) {
     this.loggedIn$ = this.auth.loggedIn$;
-    console.log(this.auth.getUserToken());
+  }
+
+  ngOnInit(boolean: Boolean) {
+    boolean = false;
+    if (this.loggedIn$) {
+      boolean = true;
+      let userToken = sessionStorage.getItem('token');
+      console.log(userToken);
+    }
   }
 }

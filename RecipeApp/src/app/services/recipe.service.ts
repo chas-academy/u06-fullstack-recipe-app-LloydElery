@@ -34,12 +34,15 @@ export class RecipeService {
       '&app_id=' +
       this.app_id +
       '&app_key=' +
-      this.app_key +
-      '&cuisineType=' +
-      cuisineType +
-      '&mealType=' +
-      mealType;
+      this.app_key;
+    if (cuisineType) {
+      url += '&cuisineType' + cuisineType;
+    }
+    if (mealType) {
+      url += '&mealType' + mealType;
+    }
     console.log(url);
+
     return this.http.get<any>(url, this.httOptions);
   }
 

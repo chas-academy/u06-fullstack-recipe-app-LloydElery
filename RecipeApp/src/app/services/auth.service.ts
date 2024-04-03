@@ -46,6 +46,7 @@ export class AuthService {
   // Hämtar boolean värdet för att guarden kräver det.
   // Vanligtvis vill vi koppla till våra streams, dock har vi inte fått det att fungera ännu
   getLoginStatus() {
+    sessionStorage.getItem('token');
     return this.loggedIn.value.loginState;
   }
 
@@ -79,14 +80,11 @@ export class AuthService {
       .subscribe((result) => {
         console.log(result);
 
-        let sessionToken = sessionStorage.setItem('token', result.token); // saves the token in the local storage
-        console.log(sessionToken);
+        sessionStorage.setItem('token', result.token); // saves the user token in the local storage
+        console.log(result.token);
 
-        let sessionUser = sessionStorage.setItem(
-          'user',
-          JSON.stringify(result.user)
-        );
-        console.log(sessionUser);
+        sessionStorage.setItem('user', JSON.stringify(result.user));
+        console.log(result.user);
 
         this.updateLoginState({
           user: result.user,

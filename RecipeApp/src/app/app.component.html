@@ -322,7 +322,7 @@
   <h2>Navbar</h2>
   <menu>
     <div class="profile-details">
-      @if((loggedIn$ | async)?.loginState ) {
+      @if((this.loggedIn$ | async)?.loginState ) {
       <h2>Welcome {{ (loggedIn$ | async)?.user?.name }}!</h2>
       <li>
         <a routerLink="" routerLinkActive="active" ariaCurrentWhenActive="page"
