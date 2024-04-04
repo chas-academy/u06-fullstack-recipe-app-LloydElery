@@ -36,26 +36,46 @@
 
   <button (click)="searchRecipe()">Search Recipe</button>
 </form>
+<!-- Grid container -->
+<section
+  class="grid justify-center gap-4 grid-cols-1 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 m-2"
+>
+  @for (recipe of recipes; track recipe) {
+  <!-- Recipe Card container -->
+  <article class="flex flex-col justify-center border-2 border-gray-500">
+    <!-- Label -->
+    <h3 class="font-bold mt-4 self-center">{{ recipe.label }}</h3>
+    <br />
+    <!-- Image container -->
+    <div class="self-center w-full h-full">
+      <!-- Recipe image -->
+      <img
+        class="size-full rounded p-4"
+        ngSrc="{{ recipe.image }}"
+        alt="{{ recipe.label }}"
+        width="200"
+        height="200"
+      />
+      <br />
+    </div>
 
-@for (recipe of recipes; track recipe) {
-<article>
-  <h3>{{ recipe.label }}</h3>
-  <div class="recipes-image">
-    <img ngSrc="{{ recipe.image }}" alt="{{ recipe.label }}" fill />
-  </div>
+    @if (recipe.totalTime != 0) {
+    <!-- Cooking time -->
+    <p class="ml-2">Time: {{ recipe.totalTime }}</p>
+    } @if (recipe.yield) {
+    <!-- Yield -->
+    <p class="ml-2">Portions: {{ recipe.yield }}</p>
+    }
 
-  @if (recipe.totalTime != 0) {
-  <p>Time: {{ recipe.totalTime }}</p>
-  } @if (recipe.yield) {
-  <p>Portions: {{ recipe.yield }}</p>
-  }
-
-  <p>
-    <a [routerLink]="['/recipe', recipe.self | recipeIdFormatter]"
-      >Go to recipe</a
+    <button
+      class="m-2 col-span-1 lg:col-span-4 md:col-span-3 sm:col-span-2 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
     >
-  </p>
-</article>
-} @empty {
-<p>There are no recipes of this kind.</p>
-}
+      <a [routerLink]="['/recipe', recipe.self | recipeIdFormatter]"
+        >Go to recipe</a
+      >
+    </button>
+  </article>
+  } @empty {
+  <p>There are no recipes of this kind.</p>
+  }
+</section>
