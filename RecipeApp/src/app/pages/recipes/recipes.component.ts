@@ -28,6 +28,7 @@ export class RecipesComponent {
 
   searchterm = ''; // User search-input: string
   cuisineTypes = [
+    '',
     'American',
     'Asian',
     'British',
@@ -41,9 +42,10 @@ export class RecipesComponent {
     'Mediterranean',
     'Nordic',
   ];
-  mealTypes = ['Breakfast', 'Dinner', 'Lunch', 'Snack', 'Teatime'];
+  mealTypes = ['', 'Breakfast', 'Dinner', 'Lunch', 'Snack', 'Teatime'];
 
   dishTypes = [
+    '',
     'Bread',
     'Cereals',
     'Desserts',

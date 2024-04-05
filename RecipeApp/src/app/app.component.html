@@ -177,124 +177,99 @@
   }
 </style>
 <nav class="flex items-center justify-between flex-wrap bg-orange-300 p-6">
-  <div class="flex items-center flex-shrink-0 text-gray-800 mr-6">
-    <svg
-      height="54"
-      viewBox="0 0 512 512"
-      width="54"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <g fill="none" stroke="#1f2937" stroke-linecap="round" stroke-width="32">
-        <g stroke-miterlimit="10">
-          <path
-            d="m322 416c0 35.35-20.65 64-56 64h-132c-35.35 0-56-28.65-56-64"
-          />
-          <path
-            d="m336 336c17.67 0 32 17.91 32 40 0 22.09-14.33 40-32 40h-272c-17.67 0-32-17.91-32-40 0-22.09 14.33-40 32-40"
-          />
-          <path
-            d="m344 336h-164.69a8 8 0 0 0 -5.65 2.34l-26.83 26.83a4 4 0 0 1 -5.66 0l-26.83-26.83a8 8 0 0 0 -5.65-2.34h-52.69a24 24 0 0 1 -24-24 24 24 0 0 1 24-24h288a24 24 0 0 1 24 24 24 24 0 0 1 -24 24z"
-          />
-          <path
-            d="m64 276v-.22c0-55 45-83.78 100-83.78h72c55 0 100 29 100 84v-.22"
-          />
-          <path d="m241 112 7.44 63.97" />
-          <path d="m256 480h139.31a32 32 0 0 0 31.91-29.61l35.78-338.39" />
-        </g>
-        <path d="m368 112 16-64 47-16" stroke-linejoin="round" />
-        <path d="m224 112h256" stroke-miterlimit="10" />
-      </g>
-    </svg>
-    <span class="font-semibold text-gray-800 text-5xl tracking-tight"
-      >Food Guru</span
-    >
-  </div>
-  <div class="block lg:hidden hover:fill-gray-500">
-    <button
-      class="inline-block text-sm px-4 py-2 leading-none border rounded hover:border-transparent mt-4 lg:mt-0 text-gray-800 border-gray-900 hover:bg-gray-100"
-    >
+  <a routerLink="" routerLinkActive="active" ariaCurrentWhenActive="page">
+    <div class="flex items-center flex-shrink-0 text-gray-800 mr-6">
       <svg
-        class="fill-current h-3 w-3"
-        viewBox="0 0 20 20"
+        height="54"
+        viewBox="0 0 512 512"
+        width="54"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <title>Menu</title>
-        <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+        <g
+          fill="none"
+          stroke="#1f2937"
+          stroke-linecap="round"
+          stroke-width="32"
+        >
+          <g stroke-miterlimit="10">
+            <path
+              d="m322 416c0 35.35-20.65 64-56 64h-132c-35.35 0-56-28.65-56-64"
+            />
+            <path
+              d="m336 336c17.67 0 32 17.91 32 40 0 22.09-14.33 40-32 40h-272c-17.67 0-32-17.91-32-40 0-22.09 14.33-40 32-40"
+            />
+            <path
+              d="m344 336h-164.69a8 8 0 0 0 -5.65 2.34l-26.83 26.83a4 4 0 0 1 -5.66 0l-26.83-26.83a8 8 0 0 0 -5.65-2.34h-52.69a24 24 0 0 1 -24-24 24 24 0 0 1 24-24h288a24 24 0 0 1 24 24 24 24 0 0 1 -24 24z"
+            />
+            <path
+              d="m64 276v-.22c0-55 45-83.78 100-83.78h72c55 0 100 29 100 84v-.22"
+            />
+            <path d="m241 112 7.44 63.97" />
+            <path d="m256 480h139.31a32 32 0 0 0 31.91-29.61l35.78-338.39" />
+          </g>
+          <path d="m368 112 16-64 47-16" stroke-linejoin="round" />
+          <path d="m224 112h256" stroke-miterlimit="10" />
+        </g>
       </svg>
-    </button>
-  </div>
+      <span class="font-semibold text-gray-800 text-5xl tracking-tight"
+        >Food Guru</span
+      >
+    </div>
+  </a>
+
   <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
     <div class="text-sm lg:flex-grow">
       <a
+        routerLink=""
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        class="inline-block mt-4 lg:inline-block lg:mt-0 text-gray-800 hover:text-gray-500 mr-4"
+        >Home</a
+      >
+      @if((this.loggedIn$ | async)?.loginState ) {
+
+      <a
+        routerLink="/profile"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        class="inline-block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
+      >
+        {{ (loggedIn$ | async)?.user?.name }}
+      </a>
+      } @else {
+      <a
         routerLink="/login"
-        class="block mt-4 lg:inline-block lg:mt-0 text-gray-800 hover:text-gray-500 mr-4"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        class="inline-block mt-4 lg:inline-block lg:mt-0 text-gray-800 hover:text-gray-500 mr-4"
       >
         Login
       </a>
       <a
-        href="#responsive-header"
-        class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
+        routerLink="/register"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        class="inline-block mt-4 lg:inline-block lg:mt-0 text-gray-800 hover:text-gray-500 mr-4"
+      >
+        Register
+      </a>
+      <a
+        routerLink="/profile"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        class="inline-block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
       >
         Profile
       </a>
-      <a
-        href="#responsive-header"
-        class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white"
-      >
-        Favourite Recipes
-      </a>
+      }
     </div>
-    <div>
+    <!--     <div>
       <a
-        href="#"
         class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0"
         >Search</a
       >
-    </div>
+    </div> -->
   </div>
-</nav>
-
-<nav>
-  <h2>Navbar</h2>
-  <menu>
-    <div class="profile-details">
-      @if((this.loggedIn$ | async)?.loginState ) {
-      <h2>Welcome {{ (loggedIn$ | async)?.user?.name }}!</h2>
-      <li>
-        <a routerLink="" routerLinkActive="active" ariaCurrentWhenActive="page"
-          >Home</a
-        >
-      </li>
-
-      <li>
-        <a
-          routerLink="/profile"
-          routerLinkActive="active"
-          ariaCurrentWhenActive="page"
-          >Profile</a
-        >
-      </li>
-
-      } @else {
-      <li>
-        <a
-          routerLink="/login"
-          routerLinkActive="active"
-          ariaCurrentWhenActive="page"
-          >Login</a
-        >
-      </li>
-      <li>
-        <a
-          routerLink="/register"
-          routerLinkActive="active"
-          ariaCurrentWhenActive="page"
-          >Register</a
-        >
-      </li>
-      }
-    </div>
-  </menu>
 </nav>
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
