@@ -1,4 +1,7 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/_bnPAxhd)
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c39e8e72-39c6-4cf4-9221-15e1c9542827/deploy-status)](https://app.netlify.com/sites/happiermeal/deploys)
+
 # U06 Receptapp
 
 Denna uppgift handlar om att bygga en receptapp som tillåter användaren att söka på recept och filtera resultat och (för VG) spara recept som man gillar i olika listor. Både backend och frontend av applikationen ska deployas och kopplas ihop så att de fungerar tillsammans. 

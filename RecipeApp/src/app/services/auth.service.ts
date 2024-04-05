@@ -31,7 +31,7 @@ export class AuthService {
   loggedIn$ = this.loggedIn.asObservable(); // En observable som är kopplad till loggedIn subjektet (denna kommer alltid att ha det senaste värdet)
 
   private baseUrl =
-    'https://u06-fullstack-recipe-app-lloydelery-2.onrender.com';
+    'https://u06-fullstack-recipe-app-lloydelery-2.onrender.com/';
   /**
    * Handle information
    */
