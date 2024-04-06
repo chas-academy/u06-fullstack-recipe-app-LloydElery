@@ -32,6 +32,16 @@ export class AppComponent {
     this.loggedIn$ = this.auth.loggedIn$;
   }
 
+  //TODO Testa om detta hjälper med inloggningen
+  /*   ngOnInit() {
+    if (!sessionStorage.getItem('foo')) {
+      sessionStorage.setItem('foo', 'no reload');
+      location.reload();
+    } else {
+      sessionStorage.removeItem('foo');
+    }
+  } */
+
   ngOnInit(boolean: Boolean) {
     boolean = false;
     if (this.loggedIn$) {
@@ -39,5 +49,9 @@ export class AppComponent {
       let userToken = sessionStorage.getItem('token');
       console.log(userToken);
     }
+  }
+
+  refresh() {
+    location.reload();
   }
 }

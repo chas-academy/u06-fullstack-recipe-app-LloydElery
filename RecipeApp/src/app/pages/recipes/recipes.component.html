@@ -126,8 +126,16 @@
 <section
   class="grid justify-center gap-4 grid-cols-1 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 m-2"
 >
-  @for (recipe of recipes; track recipe) {
+  @if (recipes?.length == 0) {
+  <article id="no-recipes-found" class="flex flex-col items-center">
+    <strong>No recipes found!</strong>
+    <p>Try using another combination when searching</p>
+  </article>
+
+  }
+
   <!-- Recipe Card container -->
+  @for (recipe of recipes; track recipe) {
   <article class="flex flex-col justify-center border-2 border-gray-500">
     <!-- Label -->
     <h3 class="font-bold mt-4 self-center">{{ recipe.label }}</h3>
@@ -161,7 +169,8 @@
       >
     </button>
   </article>
-  } @empty {
-  <p>There are no recipes of this kind.</p>
   }
+  <div>
+    <p>{{ recipes?.length }}</p>
+  </div>
 </section>
