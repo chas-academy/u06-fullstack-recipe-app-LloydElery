@@ -1,33 +1,74 @@
-<p>register works!</p>
+<div class="inline w-full max-w-xs">
+  <form
+    class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+    [formGroup]="registerForm"
+    (ngSubmit)="register()"
+  >
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+        Username:
+        <input
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          type="text"
+          id="name"
+          formControlName="name"
+        />
+      </label>
+    </div>
 
-<form [formGroup]="registerForm" (ngSubmit)="register()">
-  <label for="name">
-    Username:
-    <input type="text" id="name" formControlName="name" />
-  </label>
-  <label for="email">
-    E-mail:
-    <input type="text" id="email" formControlName="email" />
-  </label>
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+        E-mail:
+        <input
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          type="text"
+          id="email"
+          formControlName="email"
+          autocomplete="email"
+        />
+      </label>
+    </div>
 
-  <label for="password">
-    Password:
-    <input type="text" id="password" formControlName="password" />
-  </label>
+    <div class="mb-6">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+        Password:
+        <input
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+          type="password"
+          id="password"
+          formControlName="password"
+        />
+      </label>
+    </div>
 
-  <label for="password_confirmation">
-    Password:
-    <input
-      type="text"
-      id="password_confirmation"
-      formControlName="password_confirmation"
-    />
-  </label>
-  @if (this.password === this.password_confirmation) {
-  <button type="submit" [disabled]="!registerForm.valid">Register</button>
-  } @else {
-  <p>Passwords does not match</p>
-  }
-</form>
+    <div class="mb-6">
+      <label
+        class="block text-gray-700 text-sm font-bold mb-2"
+        for="password_confirmation"
+      >
+        Confirm your password:
+        <input
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+          type="password"
+          id="password_confirmation"
+          formControlName="password_confirmation"
+        />
+      </label>
+    </div>
+
+    @if (this.password === this.password_confirmation) {
+    <div class="flex items-center justify-between">
+      <button
+        class="shadow bg-teal-200 hover:bg-teal-300 text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        type="submit"
+      >
+        Register
+      </button>
+    </div>
+    } @else {
+    <p>Passwords does not match</p>
+    }
+  </form>
+</div>
 
 <h2>Profile: {{ registerForm.value.name }}</h2>

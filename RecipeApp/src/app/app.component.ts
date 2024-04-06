@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { AuthService } from './services/auth.service';
 import { Observable } from 'rxjs';
@@ -18,6 +18,7 @@ import { RecipesComponent } from './pages/recipes/recipes.component';
     RouterLinkActive,
     LoginComponent,
     NgOptimizedImage,
+    RecipesComponent,
     RecipesComponent,
   ],
   templateUrl: './app.component.html',
@@ -49,9 +50,5 @@ export class AppComponent {
       let userToken = sessionStorage.getItem('token');
       console.log(userToken);
     }
-  }
-
-  refresh() {
-    location.reload();
   }
 }

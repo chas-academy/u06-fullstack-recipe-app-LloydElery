@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
 import { RecipeService } from '../../services/recipe.service';
 import {
   FormControl,
@@ -59,6 +59,7 @@ export class RecipesComponent {
     'Starter',
     'Sweets',
   ];
+
   constructor(private recipeService: RecipeService) {}
 
   searchForm = new FormGroup({
