@@ -38,16 +38,6 @@ export class AppComponent {
     this.loggedIn$ = this.auth.loggedIn$;
   }
 
-  //TODO Testa om detta hjälper med inloggningen
-  /*   ngOnInit() {
-    if (!sessionStorage.getItem('foo')) {
-      sessionStorage.setItem('foo', 'no reload');
-      location.reload();
-    } else {
-      sessionStorage.removeItem('foo');
-    }
-  } */
-
   refreshHome() {
     this.location.replaceState('');
   }

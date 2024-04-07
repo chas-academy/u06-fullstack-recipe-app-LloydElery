@@ -51,7 +51,6 @@ export class RecipeService {
     if (dishType) {
       url += '&dishType=' + dishType;
     }
-    console.log(url);
 
     return this.http.get<any>(url, this.httOptions);
   }

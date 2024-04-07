@@ -41,9 +41,16 @@
         </thead>
         <tbody class="place-content-center m-0 p-0">
           <tr>
-            <td class="px-4">{{ recipe?.cuisineType }}</td>
+            <td class="px-4">{{ recipe?.cuisineType[0] }}</td>
             <td class="px-4">{{ recipe?.mealType[0] }}</td>
-            <td class="px-4">{{ recipe?.dishType }}</td>
+            <td class="px-4">{{ recipe?.dishType[0] }}</td>
+          </tr>
+        </tbody>
+        <tbody class="place-content-center m-0 p-0">
+          <tr>
+            <td class="px-4">{{ recipe?.cuisineType[1] }}</td>
+            <td class="px-4">{{ recipe?.mealType[1] }}</td>
+            <td class="px-4">{{ recipe?.dishType[1] }}</td>
           </tr>
         </tbody>
       </table>

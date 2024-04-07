@@ -32,7 +32,6 @@ export class RecipeComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.id = String(params.get('id'));
-      console.log(this.id);
       if (this.id) {
         this.getSingleRecipe();
       }

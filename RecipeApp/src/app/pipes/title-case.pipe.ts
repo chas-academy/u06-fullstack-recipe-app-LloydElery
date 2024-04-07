@@ -1,4 +1,3 @@
-// #docregion
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({ name: 'titlecase', standalone: true, pure: true })

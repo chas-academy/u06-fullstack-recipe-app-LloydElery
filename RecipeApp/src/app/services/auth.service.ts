@@ -28,10 +28,14 @@ export class AuthService {
   private token: string = '';
   username: string = '';
 
-  loggedIn$ = this.loggedIn.asObservable(); // En observable som är kopplad till loggedIn subjektet (denna kommer alltid att ha det senaste värdet)
+  /**
+   * loggedIn$ is an observable: boolean
+   * return the latest value
+   */
+  loggedIn$ = this.loggedIn.asObservable();
 
-  private baseUrl = 'http://127.0.0.1:8000/api/';
-  //'https://u06-fullstack-recipe-app-lloydelery-2.onrender.com/api/';
+  private baseUrl = // 'http://127.0.0.1:8000/api/';
+    'https://u06-fullstack-recipe-app-lloydelery-2.onrender.com/api/';
   /**
    * Handle information
    */
@@ -75,28 +79,21 @@ export class AuthService {
    * .subscribe to get the request result
    */
   loginUser(loginDetails: LoginDetails) {
-    console.log('loginUser-method');
-
     this.http
       .post<any>(this.baseUrl + 'login', loginDetails, this.httpOptions)
       .pipe(catchError(this.handleError))
       .subscribe((result) => {
-        console.log(result);
-
         this.userInfo = result.user;
 
         sessionStorage.setItem('token', result.token); // saves the user token in the local storage
-        console.log(result.token);
 
         sessionStorage.setItem('user', JSON.stringify(result.user));
-        console.log(result.user);
 
         this.updateLoginState({
           user: result.user,
           loginState: true,
         });
 
-        console.log();
         this.httpOptions.headers = this.httpOptions.headers.set(
           'Authorization',
           'Bearer ' + result.token
@@ -106,12 +103,10 @@ export class AuthService {
   }
 
   getUserToken(): string | null {
-    console.log(this.token);
     return this.token;
   }
 
   setUsername(name: string) {
-    console.log(this.username);
     return (this.username = name);
   }
 

@@ -1,55 +1,60 @@
-@if((loggedIn$ | async)?.loginState == false) {
-<div class="inline w-full max-w-xs">
-  <form
-    class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 min-h-[calc(100vh-138px)]"
-    [formGroup]="loginForm"
-    (ngSubmit)="login()"
-  >
-    <div class="mb-4">
-      <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
-        E-mail:
-        <input
-          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          type="text"
-          id="email"
-          formControlName="email"
-          autocomplete="email"
-        />
-      </label>
-    </div>
+<main class="bg-orange-300 flex self-center flex-col items-center">
+  @if((loggedIn$ | async)?.loginState == false) {
+  <div class="flex flex-col w-full max-w-xs">
+    <form
+      class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 min-h-[calc(100vh-138px)]"
+      [formGroup]="loginForm"
+      (ngSubmit)="login()"
+    >
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+          E-mail:
+          <input
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            type="text"
+            id="email"
+            formControlName="email"
+            autocomplete="email"
+          />
+        </label>
+      </div>
 
-    <div class="mb-6">
-      <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
-        Password:
-        <input
-          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-          type="password"
-          autocomplete="current-password"
-          id="password"
-          formControlName="password"
-        />
-      </label>
-    </div>
+      <div class="mb-6">
+        <label
+          class="block text-gray-700 text-sm font-bold mb-2"
+          for="password"
+        >
+          Password:
+          <input
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+            type="password"
+            autocomplete="current-password"
+            id="password"
+            formControlName="password"
+          />
+        </label>
+      </div>
 
-    <div class="flex items-center justify-between">
-      <button
-        class="shadow bg-teal-200 hover:bg-teal-300 text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-        type="submit"
-      >
-        Login
-      </button>
-    </div>
-  </form>
-</div>
-} @else {
-<div class="flex items-center justify-between">
-  <button
-    (click)="logOut()"
-    class="shadow bg-teal-200 hover:bg-teal-300 text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-    type="submit"
-  >
-    Logout
-  </button>
-</div>
+      <div class="flex items-center justify-between">
+        <button
+          class="shadow bg-teal-200 hover:bg-teal-300 text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          type="submit"
+        >
+          Login
+        </button>
+      </div>
+    </form>
+  </div>
+  } @else {
+  <div class="flex items-center justify-between">
+    <button
+      (click)="logOut()"
+      class="shadow bg-teal-200 hover:bg-teal-300 text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+      type="submit"
+    >
+      Logout
+    </button>
+  </div>
 
-}
+  }
+</main>

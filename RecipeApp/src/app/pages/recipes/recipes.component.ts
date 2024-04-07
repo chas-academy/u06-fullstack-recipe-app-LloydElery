@@ -91,7 +91,6 @@ export class RecipesComponent {
     let dishType = this.getRandomDishType;
     this.searchData = searchterm + cuisineType + mealType + dishType;
 
-    console.log(this.searchData);
     this.recipeService
       .getRecipes(searchterm, cuisineType, mealType, dishType)
       .subscribe((result) => {
@@ -121,7 +120,6 @@ export class RecipesComponent {
             };
           }
         );
-        console.log(recipes);
         this.recipes = recipes;
       });
   }
@@ -133,7 +131,6 @@ export class RecipesComponent {
     let mealType = this.searchData.mealType;
     let dishType = this.searchData.dishType;
 
-    console.log(this.searchData);
     this.recipeService
       .getRecipes(searchterm, cuisineType, mealType, dishType)
       .subscribe((result) => {
@@ -163,7 +160,6 @@ export class RecipesComponent {
             };
           }
         );
-        console.log(recipes);
         this.recipes = recipes;
       });
   }

@@ -6,7 +6,7 @@
  * self
  * yield -> portion amount
  * dietLables -> diet preference
- * ingredients //TODO Borde denna vara i en egen interface?
+ * ingredients
  */
 
 export interface Recipe {
@@ -18,9 +18,9 @@ export interface Recipe {
   yield?: number;
   dietLabels?: string;
   cautions?: string;
-  cuisineType?: string;
+  cuisineType?: any;
   mealType?: any;
-  dishType?: string;
+  dishType?: any;
   instructions?: string;
   tags?: string;
 }
