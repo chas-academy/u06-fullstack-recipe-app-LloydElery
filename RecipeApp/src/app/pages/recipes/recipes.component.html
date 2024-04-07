@@ -171,6 +171,8 @@
   </article>
   }
   <div>
+    @if (recipes?.length == 0) {
+    {{ refresh() }} }
     <p>{{ recipes?.length }}</p>
   </div>
 </section>
