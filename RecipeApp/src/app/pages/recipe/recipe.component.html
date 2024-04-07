@@ -1,45 +1,52 @@
-<article
-  class="flex flex-col border-4 border-orange-300 min-h-[calc(100vh-138px)]"
->
-  <div class="self-center w-full h-full">
-    <img
-      class="size-full rounded p-4"
-      ngSrc="{{ recipe?.image }}"
-      alt="{{ recipe?.label }}"
-      width="200"
-      height="200"
-    />
-  </div>
-  <section class="flex flex-col pl-4 pr-4 top-0">
-    <h2 class="font-bold self-center">{{ recipe?.label }}</h2>
-    @if (!(recipe?.totalTime == 0)) {
-    <strong>Cooking time: &nbsp; {{ recipe?.totalTime }} minutes </strong>
-    } @if (!(recipe?.cautions == '')) {
-    <strong>This food contains: </strong>
+<main class="flex flex-col content-center bg-orange-300">
+  <article
+    class="flex flex-col border-4 bg-yellow-50 border-orange-300 max-w-lg self-center min-h-[calc(100vh-136px)]"
+  >
+    <div class="self-center w-full lg:max-w-lg">
+      <img
+        class="size-full rounded p-4"
+        ngSrc="{{ recipe?.image }}"
+        alt="{{ recipe?.label }}"
+        width="200"
+        height="200"
+      />
+    </div>
+    <section class="flex flex-col pl-4 pr-4 top-0 max-w-lg self-center">
+      <h2 class="font-bold text-center">
+        {{ recipe?.label }}
+      </h2>
+      <br />
+      @if (!(recipe?.totalTime == 0)) {
+      <strong>Cooking time: &nbsp; {{ recipe?.totalTime }} minutes </strong>
+      } @if (!(recipe?.cautions == '')) {
+      <br />
+      <strong>This food contains: </strong>
 
-    <p>{{ recipe?.cautions }}</p>
-    }
-    <strong>Ingredients:</strong>
-    <ul>
-      @for (line of recipe?.ingredientLines; track line) {
-      <li>- {{ line }}</li>
+      <p>{{ recipe?.cautions }}</p>
       }
-    </ul>
-    <table class="table-fixed flex flex-wrap flex-col w-full content-center">
-      <thead class="place-content-center m-0 p-0">
-        <tr>
-          <th class="px-4">Origin:</th>
-          <th class="px-4">Meal type:</th>
-          <th class="px-4">Dish type:</th>
-        </tr>
-      </thead>
-      <tbody class="place-content-center m-0 p-0">
-        <tr>
-          <td class="px-4">{{ recipe?.cuisineType }}</td>
-          <td class="px-4">{{ recipe?.mealType }}</td>
-          <td class="px-4">{{ recipe?.dishType }}</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-</article>
+      <br />
+      <strong>Ingredients:</strong>
+      <ul>
+        @for (line of recipe?.ingredientLines; track line) {
+        <li>- {{ line }}</li>
+        }
+      </ul>
+      <table class="table-fixed flex flex-wrap flex-col w-full content-center">
+        <thead class="place-content-center m-0 p-0">
+          <tr>
+            <th class="px-4">Origin:</th>
+            <th class="px-4">Meal type:</th>
+            <th class="px-4">Dish type:</th>
+          </tr>
+        </thead>
+        <tbody class="place-content-center m-0 p-0">
+          <tr>
+            <td class="px-4">{{ recipe?.cuisineType }}</td>
+            <td class="px-4">{{ recipe?.mealType[0] }}</td>
+            <td class="px-4">{{ recipe?.dishType }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </article>
+</main>

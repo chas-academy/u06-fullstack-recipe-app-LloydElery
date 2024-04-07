@@ -5,11 +5,17 @@ import { RecipeIdFormatterPipe } from '../../pipes/recipe-id-formatter.pipe';
 import { Recipe } from '../../interfaces/recipe';
 import { CommonModule } from '@angular/common';
 import { NgOptimizedImage } from '@angular/common';
+import { TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-recipe',
   standalone: true,
-  imports: [RecipeIdFormatterPipe, CommonModule, NgOptimizedImage],
+  imports: [
+    RecipeIdFormatterPipe,
+    CommonModule,
+    NgOptimizedImage,
+    TitleCasePipe,
+  ],
   templateUrl: './recipe.component.html',
   styleUrl: './recipe.component.css',
 })

@@ -1,6 +1,4 @@
-<h2>
-  Welcome
-
-  {{ user.name }}
-</h2>
-<strong>This is your profile page!</strong>
+<section class="flex flex-col items-center min-h-[calc(100vh-136px)]">
+  <h2 class="text-xl">Welcome {{ username?.name | titlecase }}</h2>
+  <strong>This is your profile page!</strong>
+</section>

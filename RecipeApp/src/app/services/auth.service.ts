@@ -9,7 +9,7 @@ import { User } from '../interfaces/user';
 import { LoggedInUser } from '../interfaces/logged-in-user';
 import { LoginDetails } from '../interfaces/login-details';
 import { RegisterDetails } from '../interfaces/register-details';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 interface ResultData {
   token: string;
@@ -30,11 +30,14 @@ export class AuthService {
 
   loggedIn$ = this.loggedIn.asObservable(); // En observable som är kopplad till loggedIn subjektet (denna kommer alltid att ha det senaste värdet)
 
-  private baseUrl =
-    'https://u06-fullstack-recipe-app-lloydelery-2.onrender.com/api/';
+  private baseUrl = 'http://127.0.0.1:8000/api/';
+  //'https://u06-fullstack-recipe-app-lloydelery-2.onrender.com/api/';
   /**
    * Handle information
    */
+
+  userInfo: User | null = null;
+
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -80,6 +83,8 @@ export class AuthService {
       .subscribe((result) => {
         console.log(result);
 
+        this.userInfo = result.user;
+
         sessionStorage.setItem('token', result.token); // saves the user token in the local storage
         console.log(result.token);
 
@@ -96,6 +101,7 @@ export class AuthService {
           'Authorization',
           'Bearer ' + result.token
         );
+        this.router.navigate(['/profile']);
       });
   }
 

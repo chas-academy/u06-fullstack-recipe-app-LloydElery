@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 
 @Injectable({
   providedIn: 'root',
@@ -68,6 +69,5 @@ export class RecipeService {
       this.app_key;
     return this.http.get<any>(url, this.httOptions);
   }
-
-  // https://api.edamam.com/api/recipes/v2/2560dba5e97fd700f9beaa8cc23e1c51?type=public&app_id=e2706d13&app_key=74499ac92f2f41f8eb129213812c7a03
+  // https://api.edamam.com/api/recipes/v2/2560dba5e97fd700f 9beaa8cc23e1c51?type=public&app_id=e2706d13&app_key=74499ac92f2f41f8eb129213812c7a03
 }

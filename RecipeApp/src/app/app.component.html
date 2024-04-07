@@ -176,7 +176,9 @@
     }
   }
 </style>
-<nav class="flex items-center justify-between flex-wrap bg-orange-300 p-6">
+<nav
+  class="flex flex-col content-center items-center justify-between flex-wrap bg-orange-300 p-6"
+>
   <a routerLink="" routerLinkActive="active" ariaCurrentWhenActive="page">
     <div class="flex items-center flex-shrink-0 text-gray-800 mr-6 w-full">
       <svg
@@ -217,7 +219,7 @@
     </div>
   </a>
 
-  <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+  <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto mt-2">
     <div class="text-sm lg:flex-grow">
       <a
         (click)="refreshHome()"
@@ -235,7 +237,7 @@
         ariaCurrentWhenActive="page"
         class="inline-block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
       >
-        {{ (loggedIn$ | async)?.user?.name }}
+        {{ (loggedIn$ | async)?.user?.name | titlecase }}
       </a>
       } @else {
       <a
@@ -266,7 +268,6 @@
     </div>
   </div>
 </nav>
-
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * * -->
@@ -274,17 +275,17 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
 <router-outlet />
 
-<footer class="bg-white rounded-lg shadow m-4 dark:bg-gray-800">
+<footer class="flex bg-orange-100">
   <div
-    class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between"
+    class="flex-col w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between content-center"
   >
     <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400"
       >© 2024
-      <a href="https://flowbite.com/" class="hover:underline">Happier Meal™</a>.
-      All Rights Reserved.
+      <a href="https://Happiermeal.netlify.app/" class="hover:underline"
+        >Happier Meal™</a
+      >. All Rights Reserved.
     </span>
     <ul
       class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0"

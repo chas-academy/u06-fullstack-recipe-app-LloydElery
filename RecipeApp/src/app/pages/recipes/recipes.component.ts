@@ -10,6 +10,7 @@ import { Recipe } from '../../interfaces/recipe';
 import { RouterLink } from '@angular/router';
 import { RecipeIdFormatterPipe } from '../../pipes/recipe-id-formatter.pipe';
 import { NgOptimizedImage } from '@angular/common';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-recipes',
   standalone: true,
@@ -167,7 +168,6 @@ export class RecipesComponent {
       });
   }
 
-  refreshHome() {}
   refresh() {
     location.reload();
   }

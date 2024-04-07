@@ -19,7 +19,7 @@ export interface Recipe {
   dietLabels?: string;
   cautions?: string;
   cuisineType?: string;
-  mealType?: string;
+  mealType?: any;
   dishType?: string;
   instructions?: string;
   tags?: string;

@@ -34,8 +34,6 @@ export class LoginComponent {
   login() {
     const loginData = this.loginForm.value;
     this.auth.loginUser(loginData as LoginDetails);
-
-    this.router.navigate(['/profile']);
   }
 
   /*   reRoute(route: string) {
