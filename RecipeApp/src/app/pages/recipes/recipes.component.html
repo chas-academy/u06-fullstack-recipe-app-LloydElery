@@ -143,13 +143,14 @@
     <!-- Image container -->
     <div class="self-center w-full h-full">
       <!-- Recipe image -->
-      <img
-        class="size-full rounded p-4"
-        ngSrc="{{ recipe.image }}"
-        alt="{{ recipe.label }}"
-        width="200"
-        height="200"
-      />
+      <a [routerLink]="['/recipe', recipe.self | recipeIdFormatter]"
+        ><img
+          class="size-full rounded p-4"
+          ngSrc="{{ recipe.image }}"
+          alt="{{ recipe.label }}"
+          width="200"
+          height="200"
+      /></a>
       <br />
     </div>
 

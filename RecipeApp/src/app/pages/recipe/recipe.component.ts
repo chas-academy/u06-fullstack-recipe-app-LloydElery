@@ -4,11 +4,12 @@ import { RecipeService } from '../../services/recipe.service';
 import { RecipeIdFormatterPipe } from '../../pipes/recipe-id-formatter.pipe';
 import { Recipe } from '../../interfaces/recipe';
 import { CommonModule } from '@angular/common';
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-recipe',
   standalone: true,
-  imports: [RecipeIdFormatterPipe, CommonModule],
+  imports: [RecipeIdFormatterPipe, CommonModule, NgOptimizedImage],
   templateUrl: './recipe.component.html',
   styleUrl: './recipe.component.css',
 })

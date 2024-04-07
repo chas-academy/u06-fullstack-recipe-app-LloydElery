@@ -1,28 +1,43 @@
-<article>
-  <h2>{{ recipe?.label }}</h2>
-  <br />
-  <img src="{{ recipe?.image }}" alt="{{ recipe?.label }}" />
-  <br />
-  <strong>This food contains: </strong>
-  <p>{{ recipe?.cautions }}</p>
-  <br />
-  <strong>Ingredients:</strong>
-  <br />
-  <ul>
-    @for (line of recipe?.ingredientLines; track line) {
-    <li>{{ line }}</li>
-    }
-  </ul>
-  <strong>Cooking time: </strong>
-  <p>{{ recipe?.totalTime }} minutes</p>
-  <br />
-  <strong>Global Kitchen:</strong>
-  <p class="tags">{{ recipe?.cuisineType }}</p>
-  <br />
-  <strong>Type of meal:</strong>
-  <p class="tags">{{ recipe?.mealType }}</p>
-  <p class="tags">{{ recipe?.dishType }}</p>
+<article class="flex flex-col justify-center border-4 border-orange-300">
+  <div class="self-center w-full h-full">
+    <img
+      class="size-full rounded p-4"
+      ngSrc="{{ recipe?.image }}"
+      alt="{{ recipe?.label }}"
+      width="200"
+      height="200"
+    />
+  </div>
+  <section class="flex flex-col pl-4 pr-4 top-0">
+    <h2 class="font-bold self-center">{{ recipe?.label }}</h2>
+    @if (!(recipe?.totalTime == 0)) {
+    <strong>Cooking time: &nbsp; {{ recipe?.totalTime }} minutes </strong>
+    } @if (!(recipe?.cautions == '')) {
+    <strong>This food contains: </strong>
 
-  <p class="tags">{{ recipe?.instructions }}</p>
-  <p class="tags">{{ recipe?.tags }}</p>
+    <p>{{ recipe?.cautions }}</p>
+    }
+    <strong>Ingredients:</strong>
+    <ul>
+      @for (line of recipe?.ingredientLines; track line) {
+      <li>- {{ line }}</li>
+      }
+    </ul>
+    <table class="table-fixed flex flex-wrap flex-col w-full content-center">
+      <thead class="place-content-center m-0 p-0">
+        <tr>
+          <th class="px-4">Origin:</th>
+          <th class="px-4">Meal type:</th>
+          <th class="px-4">Dish type:</th>
+        </tr>
+      </thead>
+      <tbody class="place-content-center m-0 p-0">
+        <tr>
+          <td class="px-4">{{ recipe?.cuisineType }}</td>
+          <td class="px-4">{{ recipe?.mealType }}</td>
+          <td class="px-4">{{ recipe?.dishType }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
 </article>

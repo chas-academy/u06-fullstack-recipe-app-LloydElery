@@ -178,7 +178,7 @@
 </style>
 <nav class="flex items-center justify-between flex-wrap bg-orange-300 p-6">
   <a routerLink="" routerLinkActive="active" ariaCurrentWhenActive="page">
-    <div class="flex items-center flex-shrink-0 text-gray-800 mr-6">
+    <div class="flex items-center flex-shrink-0 text-gray-800 mr-6 w-full">
       <svg
         height="54"
         viewBox="0 0 512 512"
@@ -211,7 +211,7 @@
           <path d="m224 112h256" stroke-miterlimit="10" />
         </g>
       </svg>
-      <span class="font-semibold text-gray-800 text-5xl tracking-tight"
+      <span class="font-semibold text-gray-800 text-5xl tracking-tight w-full"
         >Happier Meal</span
       >
     </div>
@@ -264,12 +264,6 @@
       </a>
       }
     </div>
-    <!--     <div>
-      <a
-        class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0"
-        >Search</a
-      >
-    </div> -->
   </div>
 </nav>
 
@@ -282,3 +276,54 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
 <router-outlet />
+<div class="flex items-center justify-between">
+  <a routerLink="">
+    <button
+      class="shadow bg-teal-200 hover:bg-teal-300 text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+      type="submit"
+    >
+      Home
+    </button>
+  </a>
+</div>
+<footer class="bg-white rounded-lg shadow m-4 dark:bg-gray-800">
+  <div
+    class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between"
+  >
+    <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400"
+      >© 2024
+      <a href="https://flowbite.com/" class="hover:underline">Happier Meal™</a>.
+      All Rights Reserved.
+    </span>
+    <ul
+      class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0"
+    >
+      <li>
+        <a
+          href="https://github.com/chas-academy/u06-fullstack-recipe-app-LloydElery"
+          class="hover:underline me-4 md:me-6"
+          >About</a
+        >
+      </li>
+      <li>
+        <a href="https://chasacademy.se/" class="hover:underline me-4 md:me-6"
+          >Chas Academy</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://github.com/LloydElery"
+          class="hover:underline me-4 md:me-6"
+          >My GitHub</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://www.linkedin.com/in/dennis-jensen-stockholm/"
+          class="hover:underline"
+          >LinkedIn</a
+        >
+      </li>
+    </ul>
+  </div>
+</footer>

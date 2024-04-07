@@ -57,7 +57,6 @@ export class AppComponent {
     if (this.loggedIn$) {
       boolean = true;
       let userToken = sessionStorage.getItem('token');
-      console.log(userToken);
     }
   }
 }
