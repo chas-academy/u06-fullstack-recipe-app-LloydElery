@@ -37,6 +37,7 @@
           type="password"
           id="password"
           formControlName="password"
+          placeholder="Password"
         />
       </label>
     </div>
@@ -52,20 +53,37 @@
           type="password"
           id="password_confirmation"
           formControlName="password_confirmation"
+          placeholder="Repeate password"
         />
       </label>
     </div>
+    @if (registerForm.value.name == '' || registerForm.value.email == '' ||
+    registerForm.value.password == '' ||
+    registerForm.value.password_confirmation == '' ||
+    registerForm.value.password != registerForm.value.password_confirmation) {
 
-    @if (this.password === this.password_confirmation) {
     <div class="flex items-center justify-between">
       <button
+        [disabled]="!registerForm.valid"
+        class="shadow bg-gray-100 text-gray-500 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+      >
+        Register
+      </button>
+    </div>
+    } @if (registerForm.value.password ==
+    registerForm.value.password_confirmation && registerForm.value.password !=
+    '') {
+    <div class="flex items-center justify-between">
+      <button
+        [disabled]="!registerForm.valid"
         class="shadow bg-teal-200 hover:bg-teal-300 text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
         type="submit"
       >
         Register
       </button>
     </div>
-    } @else {
+    } @else if (registerForm.value.password !=
+    registerForm.value.password_confirmation) {
     <p>Passwords does not match</p>
     }
   </form>
