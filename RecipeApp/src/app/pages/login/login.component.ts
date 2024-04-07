@@ -32,11 +32,10 @@ export class LoginComponent {
   });
 
   login() {
-    console.log('login-method');
     const loginData = this.loginForm.value;
-    console.log(loginData);
     this.auth.loginUser(loginData as LoginDetails);
-    console.log('You are now logged in!');
+
+    this.router.navigate(['/profile']);
   }
 
   /*   reRoute(route: string) {

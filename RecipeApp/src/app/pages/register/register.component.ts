@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { RegisterDetails } from '../../interfaces/register-details';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -17,7 +18,7 @@ import { RegisterDetails } from '../../interfaces/register-details';
   styleUrl: './register.component.css',
 })
 export class RegisterComponent {
-  constructor(private auth: AuthService) {}
+  constructor(private auth: AuthService, private router: Router) {}
 
   registerForm = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -30,14 +31,11 @@ export class RegisterComponent {
   password_confirmation = this.registerForm.value.password_confirmation;
 
   register() {
-    console.log('register-method');
     const registerData = this.registerForm.value;
-    console.log('...');
-    console.log(registerData);
     this.auth
       .registerUser(registerData as RegisterDetails)
-      .subscribe((result) => {
-        console.log('Success', result);
-      });
+      .subscribe((result) => {});
+
+    this.router.navigate(['/login']);
   }
 }
