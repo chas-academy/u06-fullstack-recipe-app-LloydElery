@@ -2,14 +2,14 @@ import {
   HttpClient,
   HttpHeaders,
   HttpErrorResponse,
-} from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, catchError, throwError } from 'rxjs';
-import { User } from '../interfaces/user';
-import { LoggedInUser } from '../interfaces/logged-in-user';
-import { LoginDetails } from '../interfaces/login-details';
-import { RegisterDetails } from '../interfaces/register-details';
-import { Router } from '@angular/router';
+} from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { BehaviorSubject, Observable, catchError, throwError } from "rxjs";
+import { User } from "../interfaces/user";
+import { LoggedInUser } from "../interfaces/logged-in-user";
+import { LoginDetails } from "../interfaces/login-details";
+import { RegisterDetails } from "../interfaces/register-details";
+import { Router } from "@angular/router";
 
 interface ResultData {
   token: string;
@@ -17,7 +17,7 @@ interface ResultData {
 }
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class AuthService {
   private loggedIn = new BehaviorSubject<LoggedInUser>({
@@ -25,8 +25,8 @@ export class AuthService {
     loginState: false,
   });
 
-  private token: string = '';
-  username: string = '';
+  private token: string = "";
+  username: string = "";
 
   /**
    * loggedIn$ is an observable: boolean
@@ -34,8 +34,9 @@ export class AuthService {
    */
   loggedIn$ = this.loggedIn.asObservable();
 
-  private baseUrl = // 'http://127.0.0.1:8000/api/';
-    'https://u06-fullstack-recipe-app-lloydelery-2.onrender.com/api/';
+  private baseUrl =
+    "https://u06-fullstack-recipe-app-lloydelery-2.onrender.com/api/";
+
   /**
    * Handle information
    */
@@ -44,7 +45,7 @@ export class AuthService {
 
   private httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     }),
   };
 
@@ -53,7 +54,7 @@ export class AuthService {
   // Hämtar boolean värdet för att guarden kräver det.
   // Vanligtvis vill vi koppla till våra streams, dock har vi inte fått det att fungera ännu
   getLoginStatus() {
-    sessionStorage.getItem('token');
+    sessionStorage.getItem("token");
     return this.loggedIn.value.loginState;
   }
 
@@ -65,7 +66,7 @@ export class AuthService {
   registerUser(registerDetails: RegisterDetails): Observable<ResultData> {
     return this.http
       .post<ResultData>(
-        this.baseUrl + 'register',
+        this.baseUrl + "register",
         registerDetails,
         this.httpOptions
       )
@@ -80,14 +81,14 @@ export class AuthService {
    */
   loginUser(loginDetails: LoginDetails) {
     this.http
-      .post<any>(this.baseUrl + 'login', loginDetails, this.httpOptions)
+      .post<any>(this.baseUrl + "login", loginDetails, this.httpOptions)
       .pipe(catchError(this.handleError))
       .subscribe((result) => {
         this.userInfo = result.user;
 
-        sessionStorage.setItem('token', result.token); // saves the user token in the local storage
+        sessionStorage.setItem("token", result.token); // saves the user token in the local storage
 
-        sessionStorage.setItem('user', JSON.stringify(result.user));
+        sessionStorage.setItem("user", JSON.stringify(result.user));
 
         this.updateLoginState({
           user: result.user,
@@ -95,10 +96,10 @@ export class AuthService {
         });
 
         this.httpOptions.headers = this.httpOptions.headers.set(
-          'Authorization',
-          'Bearer ' + result.token
+          "Authorization",
+          "Bearer " + result.token
         );
-        this.router.navigate(['/profile']);
+        this.router.navigate(["/profile"]);
       });
   }
 
@@ -116,8 +117,8 @@ export class AuthService {
       loginState: false,
     });
     this.httpOptions.headers = this.httpOptions.headers.set(
-      'Authorization',
-      'Bearer '
+      "Authorization",
+      "Bearer "
     );
     sessionStorage.clear();
   }
@@ -127,13 +128,13 @@ export class AuthService {
 
     user = {
       id: 0,
-      name: '',
-      email: '',
+      name: "",
+      email: "",
     };
 
     this.http
       .get<User[]>(
-        this.baseUrl + 'getUser/' + this.loggedIn.value.user?.id,
+        this.baseUrl + "getUser/" + this.loggedIn.value.user?.id,
         this.httpOptions
       )
       .subscribe((res) => (user = res[0]));
@@ -142,7 +143,7 @@ export class AuthService {
 
   private handleError(error: HttpErrorResponse) {
     if (error.status === 404) {
-      console.error('An error occurred:', error.error);
+      console.error("An error occurred:", error.error);
     } else {
       console.error(
         `Backend returned code ${error.status}, body was: `,
@@ -150,7 +151,7 @@ export class AuthService {
       );
     }
     return throwError(
-      () => new Error('Something bad happened; please try again later.')
+      () => new Error("Something bad happened; please try again later.")
     );
   }
 }
