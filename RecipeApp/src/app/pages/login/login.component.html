@@ -1,5 +1,5 @@
 <main class="bg-orange-300 flex self-center flex-col items-center">
-  @if((loggedIn$ | async)?.loginState == false) {
+  @if((loggedIn$ | async)?.loginState != true) {
   <div class="flex flex-col w-full max-w-xs">
     <form
       class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 min-h-[calc(100vh-138px)]"
@@ -45,7 +45,7 @@
       </div>
     </form>
   </div>
-
+  } @else {
   <div class="flex items-center justify-between">
     <button
       (click)="logOut()"
@@ -55,4 +55,6 @@
       Logout
     </button>
   </div>
+
+  }
 </main>
